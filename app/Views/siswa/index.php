@@ -1,6 +1,6 @@
 <?= $this->extend('siswa/header_footer'); ?>
 
-<?= $this->section('content '); ?>
+<?= $this->section('content'); ?>
 <!-- MAIN -->
 <div class="main">
     <!-- MAIN CONTENT -->

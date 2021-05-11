@@ -16,7 +16,8 @@ class PagesSiswa extends BaseController
 	// SISWA
 	public function indexSiswa()
 	{
-		return view('siswa/Index');
+		$data['content'] = 'index';
+		return view('siswa/Index', $data);
 	}
 	public function jadwalSiswa()
 	{
