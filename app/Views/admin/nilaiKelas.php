@@ -1,6 +1,6 @@
 <?= $this->extend('admin/header_footer'); ?>
 
-<?= $this->extend('content'); ?>
+<?= $this->section('content'); ?>
 <!-- MAIN -->
 <div class="main">
     <!-- MAIN CONTENT -->

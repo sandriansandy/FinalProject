@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title><?= $judul ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -28,14 +28,14 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="../assets/img/icon.png" alt="Klorofil Logo" class="img-responsive logo" style="height: 24px; width: 24px;"></a>
+				<a href="<?php base_url() ?>/admin"><img src="../assets/img/icon.png" alt="Klorofil Logo" class="img-responsive logo" style="height: 24px; width: 24px;"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-danger update-pro" href="page-login.html" title="Logout" target="_blank"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
+					<a class="btn btn-danger update-pro" href="<?php base_url() ?>/login" title="Logout"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -52,19 +52,22 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class="active"><i class="glyphicon glyphicon-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="pds.html" class=""><i class="glyphicon glyphicon-education"></i> <span>Data Siswa</span></a></li>
-						<li><a href="pdg.html" class=""><i class="glyphicon glyphicon-user"></i> <span>Data Guru</span></a></li>
-						<li><a href="jadwal.html" class=""><i class="glyphicon glyphicon-calendar"></i> <span>Jadwal Pelajaran</span></a></li>
-						<li><a href="nilai.html" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
-						<li><a href="presensi.html" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
-						<li><a href="layanan.html" class=""><i class="glyphicon glyphicon-file"></i> <span>Layanan Kesiswaan</span></a></li>
+						<li><a href="<?php base_url() ?>/admin" class="active"><i class="glyphicon glyphicon-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/pds" class=""><i class="glyphicon glyphicon-education"></i> <span>Data Siswa</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/pdg" class=""><i class="glyphicon glyphicon-user"></i> <span>Data Guru</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/jadwal" class=""><i class="glyphicon glyphicon-calendar"></i> <span>Jadwal Pelajaran</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/nilai" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/presensi" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
+						<li><a href="<?php base_url() ?>/admin/layanan" class=""><i class="glyphicon glyphicon-file"></i> <span>Layanan Kesiswaan</span></a></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
-        		<!-- END MAIN -->
+
+		<?= $this->renderSection('content'); ?>
+
+		<!-- END MAIN -->
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">

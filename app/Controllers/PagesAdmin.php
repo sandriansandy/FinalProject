@@ -5,72 +5,106 @@ namespace App\Controllers;
 class PagesAdmin extends BaseController
 {
     // ADMIN
-    public function detailPresensiGuru()
+    public function detailPresensiAdmin()
     {
-        return view('admin/detailPresensi');
+        $data['judul'] = 'Detail Presensi | SINOFAK';
+        $data['content'] = 'detailPresensi';
+        return view('admin/detailPresensi', $data);
     }
-    public function indexGuru()
+    public function indexAdmin()
     {
-        return view('admin/index');
+        $data['judul'] = 'Home | SINOFAK';
+        $data['content'] = 'index';
+        return view('admin/index', $data);
     }
-    public function jadwalGuru()
+    public function jadwalAdmin()
     {
-        return view('admin/jadwal');
+        $data['judul'] = 'Jadwal | SINOFAK';
+        $data['content'] = 'jadwal';
+        return view('admin/jadwal', $data);
     }
-    public function nilaiGuru()
+    public function nilaiAdmin()
     {
-        return view('admin/nilai');
+        $data['judul'] = 'Nilai | SINOFAK';
+        $data['content'] = 'nilai';
+        return view('admin/nilai', $data);
     }
-    public function nilaiKelasGuru()
+    public function nilaiKelasAdmin()
     {
-        return view('admin/nilaiKelas');
+        $data['judul'] = 'Nilai | SINOFAK';
+        $data['content'] = 'nilaiKelas';
+        return view('admin/nilaiKelas', $data);
     }
-    public function presensiGuru()
+    public function presensiAdmin()
     {
-        return view('admin/presensi');
+        $data['judul'] = 'Presensi | SINOFAK';
+        $data['content'] = 'presensi';
+        return view('admin/presensi', $data);
     }
-    public function detailGuru()
+    public function detailGuruAdmin()
     {
-        $this->load->view('admin/detailGuru');
+        $data['judul'] = 'Detail Guru | SINOFAK';
+        $data['content'] = 'detailGuru';
+        return view('admin/detailGuru', $data);
     }
-    public function detailSiswa()
+    public function detailSiswaAdmin()
     {
-        $this->load->view('admin/detailSiswa');
+        $data['judul'] = 'Detail Siswa | SINOFAK';
+        $data['content'] = 'detailSiswa';
+        return view('admin/detailSiswa', $data);
     }
-    public function editGuru()
+    public function editGuruAdmin()
     {
-        $this->load->view('admin/editGuru');
+        $data['judul'] = 'Edit Guru | SINOFAK';
+        $data['content'] = 'editGuru';
+        return view('admin/editGuru', $data);
     }
-    public function editJadwal()
+    public function editJadwalAdmin()
     {
-        $this->load->view('admin/editJadwal');
+        $data['judul'] = 'Edit Jadwal | SINOFAK';
+        $data['content'] = 'editJadwal';
+        return view('admin/editJadwal', $data);
     }
-    public function editSiswa()
+    public function editSiswaAdmin()
     {
-        $this->load->view('admin/editSiswa');
+        $data['judul'] = 'Edit Siswa | SINOFAK';
+        $data['content'] = 'editSiswa';
+        return view('admin/editSiswa', $data);
     }
-    public function layanan()
+    public function layananAdmin()
     {
-        $this->load->view('admin/layanan');
+        $data['judul'] = 'Layanan | SINOFAK';
+        $data['content'] = 'layanan';
+        return view('admin/layanan', $data);
     }
     public function pdg()
     {
-        $this->load->view('admin/pdg');
+        $data['judul'] = 'Data Guru | SINOFAK';
+        $data['content'] = 'pdg';
+        return view('admin/pdg', $data);
     }
     public function pds()
     {
-        $this->load->view('admin/pds');
+        $data['judul'] = 'Data Siswa | SINOFAK';
+        $data['content'] = 'pds';
+        return view('admin/pds', $data);
     }
-    public function tambahGuru()
+    public function tambahGuruAdmin()
     {
-        $this->load->view('admin/tambahGuru');
+        $data['judul'] = 'Tambah Guru | SINOFAK';
+        $data['content'] = 'tambahGuru';
+        return view('admin/tambahGuru', $data);
     }
-    public function tambahJadwal()
+    public function tambahJadwalAdmin()
     {
-        $this->load->view('admin/tambahJadwal');
+        $data['judul'] = 'Tambah Jadwal | SINOFAK';
+        $data['content'] = 'tambahJadwal';
+        return view('admin/tambahJadwal', $data);
     }
-    public function tambahSiswa()
+    public function tambahSiswaAdmin()
     {
-        $this->load->view('admin/tambahSiswa');
+        $data['judul'] = 'Tambah Siswa | SINOFAK';
+        $data['content'] = 'tambahSiswa';
+        return view('admin/tambahSiswa', $data);
     }
 }

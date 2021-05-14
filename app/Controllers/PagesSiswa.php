@@ -16,23 +16,32 @@ class PagesSiswa extends BaseController
 	// SISWA
 	public function indexSiswa()
 	{
+		$data['judul'] = 'Home | SINOFAK';
 		$data['content'] = 'index';
 		return view('siswa/Index', $data);
 	}
 	public function jadwalSiswa()
 	{
-		return view('siswa/jadwal');
+		$data['judul'] = 'Jadwal Pelajaran | SINOFAK';
+		$data['content'] = 'jadwal';
+		return view('siswa/jadwal', $data);
 	}
 	public function layananSiswa()
 	{
-		return view('siswa/layanan');
+		$data['judul'] = 'Layanan | SINOFAK';
+		$data['content'] = 'layanan';
+		return view('siswa/layanan', $data);
 	}
 	public function nilaiSiswa()
 	{
-		return view('siswa/nilai');
+		$data['judul'] = 'Nilai | SINOFAK';
+		$data['content'] = 'nilai';
+		return view('siswa/nilai', $data);
 	}
 	public function presensiSiswa()
 	{
-		return view('siswa/presensi');
+		$data['judul'] = 'Presensi | SINOFAK';
+		$data['content'] = 'presensi';
+		return view('siswa/presensi', $data);
 	}
 }
