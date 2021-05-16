@@ -31,7 +31,7 @@
                         <td>Matematika</td>
                         <td>12-04-2015</td>
                         <td>
-                            <a class="btn btn-info" href="detailGuru.html"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
+                            <a class="btn btn-info" href="<?php base_url() ?>/admin/detailGuru"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
                             <a class="btn btn-warning" href="editGuru.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
                             <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                         </td>

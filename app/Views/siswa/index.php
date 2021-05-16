@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img src="../assets/img/user2.png" alt="" style="height: 8cm; width: 6cm;">
+                    <img src="../assets/img/<?= $identitas['foto']; ?>" alt="" style="height: 8cm; width: 6cm;">
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <table style="margin-bottom: 30px;">
@@ -18,12 +18,12 @@
                         <tr>
                             <td>NISN </td>
                             <td>:</td>
-                            <td>12345</td>
+                            <td> <?= $identitas['NISN']; ?></td>
                         </tr>
                         <tr>
                             <td>Nama </td>
                             <td>:</td>
-                            <td>Andhika Alauddin Mifta</td>
+                            <td> <?= $identitas['Nama']; ?></td>
                         </tr>
                         <tr>
                             <td>Jenis Kelamin </td>

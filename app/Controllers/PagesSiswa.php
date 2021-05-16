@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelSiswa;
+
 class PagesSiswa extends BaseController
 {
 	// public function index()
@@ -14,11 +16,23 @@ class PagesSiswa extends BaseController
 	}
 
 	// SISWA
+	//protected $siswa;
+	// public function __construct()
+	// {
+	// 	$this->siswa = new ModelSiswa();
+	// }
 	public function indexSiswa()
 	{
+		$this->siswa = new ModelSiswa();
 		$data['judul'] = 'Home | SINOFAK';
 		$data['content'] = 'index';
+		$data['identitas'] = $this->siswa->getSiswa();
 		return view('siswa/Index', $data);
+
+
+		// $this->siswa = new ModelSiswa();
+		// $cek = $this->siswa->getSiswa();
+		// dd($cek);
 	}
 	public function jadwalSiswa()
 	{

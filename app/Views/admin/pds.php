@@ -25,17 +25,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>12345679999999999999999999</td>
-						<td>Sandrian Yulian Firmansyah Noorihsan</td>
-						<td>20</td>
-						<td>XI MIPA 2</td>
-						<td>
-							<a class="btn btn-info" href="detailSiswa.html"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
-							<a class="btn btn-warning" href="editSiswa.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-							<a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-						</td>
-					</tr>
+					<?php foreach ($identitas as $i) : ?>
+						<tr>
+							<td><?= $i['NISN']; ?></td>
+							<td><?= $i['Nama']; ?></td>
+							<td><?= $i['Angkatan']; ?></td>
+							<td><?= $i['nama']; ?></td>
+							<td>
+								<a class="btn btn-info" href="<?php base_url() ?> /admin/detailSiswa/<?= $i['NISN']; ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
+								<a class="btn btn-warning" href="editSiswa.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+								<a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>

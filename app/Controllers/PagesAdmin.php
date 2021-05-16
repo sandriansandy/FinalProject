@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelSiswa;
+
 class PagesAdmin extends BaseController
 {
     // ADMIN
@@ -47,10 +49,12 @@ class PagesAdmin extends BaseController
         $data['content'] = 'detailGuru';
         return view('admin/detailGuru', $data);
     }
-    public function detailSiswaAdmin()
+    public function detailSiswaAdmin($NISN)
     {
+        $this->siswa = new ModelSiswa();
         $data['judul'] = 'Detail Siswa | SINOFAK';
         $data['content'] = 'detailSiswa';
+        $data['identitas'] = $this->siswa->getSiswaAdmin($NISN);
         return view('admin/detailSiswa', $data);
     }
     public function editGuruAdmin()
@@ -85,8 +89,10 @@ class PagesAdmin extends BaseController
     }
     public function pds()
     {
+        $this->siswa = new ModelSiswa();
         $data['judul'] = 'Data Siswa | SINOFAK';
         $data['content'] = 'pds';
+        $data['identitas'] = $this->siswa->getSiswaAdmin();
         return view('admin/pds', $data);
     }
     public function tambahGuruAdmin()
