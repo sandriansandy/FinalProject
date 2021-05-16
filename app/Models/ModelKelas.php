@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelAdmin extends Model
+class ModelKelas extends Model
 {
+    protected $table = 'kelas';
+    protected $primaryKey = 'id_kelas';
     public function getKelas()
     {
-        $table = 'kelas';
-        $primaryKey = 'id_kelas';
         return $this->findAll();
     }
 }

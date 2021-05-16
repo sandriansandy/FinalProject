@@ -8,6 +8,7 @@ class ModelSiswa extends Model
 {
     protected $table = 'siswa';
     protected $primaryKey = 'NISN';
+    protected $allowedFields = ['NISN', 'Nama', 'TTL', 'Angkatan', 'Alamat', 'tgl_masuk', 'jenis_kelamin', 'foto', 'id_kelas'];
 
     public function getSiswa()
     {

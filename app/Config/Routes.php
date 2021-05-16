@@ -56,7 +56,7 @@ $routes->get('/admin/nilai/', 'PagesAdmin::nilaiAdmin');
 $routes->get('/admin/nilaiKelas', 'PagesAdmin::nilaiKelasAdmin');
 $routes->get('/admin/presensi', 'PagesAdmin::presensiAdmin');
 $routes->get('/admin/detailGuru', 'PagesAdmin::detailGuruAdmin');
-$routes->get('/admin/detailSiswa/(:segment)', 'PagesAdmin::detailSiswaAdmin/$1');
+$routes->get('/admin/detailSiswa/(:any)', 'PagesAdmin::detailSiswaAdmin/$1');
 $routes->get('/admin/editGuru', 'PagesAdmin::editGuruAdmin');
 $routes->get('/admin/editJadwal', 'PagesAdmin::editJadwalAdmin');
 $routes->get('/admin/editSiswa', 'PagesAdmin::editSiswaAdmin');
@@ -66,6 +66,7 @@ $routes->get('/admin/pds', 'PagesAdmin::pds');
 $routes->get('/admin/tambahGuru', 'PagesAdmin::tambahGuruAdmin');
 $routes->get('/admin/tambahJadwal', 'PagesAdmin::tambahJadwalAdmin');
 $routes->get('/admin/tambahSiswa', 'PagesAdmin::tambahSiswaAdmin');
+$routes->post('/admin/simpanSiswa', 'PagesAdmin::simpanSiswa');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

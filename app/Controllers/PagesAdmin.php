@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelSiswa;
+use App\Models\ModelKelas;
 
 class PagesAdmin extends BaseController
 {
@@ -109,8 +110,33 @@ class PagesAdmin extends BaseController
     }
     public function tambahSiswaAdmin()
     {
+        $this->kelas = new ModelKelas();
         $data['judul'] = 'Tambah Siswa | SINOFAK';
         $data['content'] = 'tambahSiswa';
+        $data['kelas'] = $this->kelas->getKelas();
         return view('admin/tambahSiswa', $data);
+    }
+
+
+    public function simpanSiswa()
+    {
+        $this->siswa = new ModelSiswa();
+        $this->siswa->insert([
+            'NISN' => $this->request->getVar('NISN'),
+            'Nama' => $this->request->getVar('Nama'),
+            'TTL' => $this->request->getVar('TTL'),
+            'Angkatan' => $this->request->getVar('Angkatan'),
+            'Alamat' => $this->request->getVar('Alamat'),
+            'tgl_masuk' => $this->request->getVar('Tgl_Masuk'),
+            'foto' => $this->request->getVar('foto'),
+            'id_kelas' => $this->request->getVar('kelas'),
+            'jenis_kelamin' => $this->request->getVar('gender')
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/pds');
+        // }
+        // session()->setFlashdata('pesan', 'Data Gagal Ditambahkan');
+        // return redirect()->to('/admin/pds');
     }
 }

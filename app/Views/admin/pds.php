@@ -7,11 +7,14 @@
 	<div class="main-content">
 		<div class="container-fluid">
 			<div class="row">
+				<?php if (session()->getFlashdata('pesan')) : ?>
+					<div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan') ?></div>
+				<?php endif; ?>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<p class="lead">Pangkalan Data Siswa</p>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<a href="tambahSiswa.html" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
+					<a href="<?php base_url() ?> /admin/tambahSiswa" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
 				</div>
 			</div>
 			<table id="example" class="table table-striped table-bordered" style="width:100%">

@@ -10,43 +10,66 @@
 				<div class="panel-heading">
 					<h1 class="panel-title">Form Tambah Data</h1>
 				</div>
-				<div class="panel-body">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="NISN" type="text">
+				<form action="<?php base_url() ?>/admin/simpanSiswa" method="post">
+					<div class="panel-body">
+						<label for="NISN">NISN</label><br>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="NISN" type="text" id="NISN" name="NISN">
+						</div>
+						<br>
+						<label for="Nama">Nama</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Nama" type="text" id="Nama" name="Nama">
+						</div>
+						<br>
+						<label for="TTL">Tanggal Lahir</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Tempat Tanggal Lahir" type="date" id="TTL" name="TTL">
+						</div>
+						<br>
+						<label for="Angkatan">Angkatan</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Angkatan" type="text" id="Angkatan" name="Angkatan">
+						</div>
+						<br>
+						<label for="Alamat">Alamat</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Alamat" type="text" id="Alamat" name="Alamat">
+						</div>
+						<br>
+						<label for="Tanggal_masuk">Tanggal Masuk</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Tanggal Masuk" type="date" id="Tanggal_masuk" name="Tgl_masuk">
+						</div>
+						<br>
+						<label for="foto">Unggah Foto</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-file"></i></span>
+							<input class="form-control" placeholder="foto" type="file" name="foto">
+						</div>
+						<br>
+						<label for="Kelas">Kelas</label>
+						<select class="form-control" name="kelas">
+							<?php foreach ($kelas as $kel) : ?>
+								<option value="<?= $kel['id_kelas'] ?>"><?= $kel['nama'] ?></option>
+							<?php endforeach; ?>
+						</select>
+						<br>
+						<label for="jenis_kelamin">Jenis Kelamin</label>
+						<select class="form-control" name="gender">
+							<option value="cheese">Laki-Laki</option>
+							<option value="tomatoes">Perempuan</option>
+						</select>
+						<br>
+						<input type="submit" value="SUBMIT" class="btn btn-success">
 					</div>
-					<br>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="Nama" type="text">
-					</div>
-					<br>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="Tempat Tanggal Lahir" type="date">
-					</div>
-					<br>
-					<select class="form-control">
-						<option value="cheese">X</option>
-						<option value="tomatoes">XI</option>
-						<option value="mozarella">XII</option>
-					</select>
-					<br>
-					<select class="form-control">
-						<option value="cheese">MIPA</option>
-						<option value="tomatoes">IIS</option>
-						<option value="mozarella">Bahasa</option>
-					</select>
-					<br>
-					<label class="fancy-radio">
-						<input name="gender" value="male" type="radio">
-						<span><i></i>Laki-laki</span>
-						<input name="gender" value="female" type="radio">
-						<span><i></i>Perempuan</span>
-					</label>
-					<br>
-					<a href="pds.html" class="btn btn-success">Submit</a>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
