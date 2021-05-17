@@ -13,7 +13,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-					<img src="../assets/img/195150401111010.jpg" alt="" style="height: 8cm; width: 6cm;">
+					<img src="<?php base_url() ?>/assets/img/profil_guru/<?= $identitas['foto']; ?>" alt="" style="height: 8cm; width: 6cm;">
 				</div>
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 					<table style="margin-bottom: 30px;">

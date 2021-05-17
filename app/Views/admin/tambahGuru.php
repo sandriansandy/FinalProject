@@ -10,7 +10,7 @@
 				<div class="panel-heading">
 					<h1 class="panel-title">Form Tambah Data</h1>
 				</div>
-				<form action="<?php base_url() ?>/admin/simpanGuru" method="POST">
+				<form action="<?php base_url() ?>/admin/simpanGuru" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<label for="NIP">NIP</label>
 						<div class="input-group">
@@ -51,7 +51,7 @@
 						<label>Mata Pelajaran</label>
 						<select class="form-control" id="mapel" name="mapel">
 							<?php foreach ($mapel as $m) : ?>
-								<option value="<?= $m['id_mapel'] ?>"><?= $m['Nama'] ?></option>
+								<option value="<?= $m['id_mapel'] ?>"><?= $m['Nama_mapel'] ?></option>
 							<?php endforeach; ?>
 						</select>
 						<br>

@@ -61,6 +61,7 @@ $routes->get('/admin/editGuru', 'PagesAdmin::editGuruAdmin');
 $routes->get('/admin/editJadwal', 'PagesAdmin::editJadwalAdmin');
 $routes->get('/admin/editSiswa', 'PagesAdmin::editSiswaAdmin');
 $routes->get('/admin/hapusSiswa/(:any)', 'PagesAdmin::hapusSiswaAdmin/$1');
+$routes->get('/admin/hapusGuru/(:any)', 'PagesAdmin::hapusGuruAdmin/$1');
 $routes->get('/admin/layanan', 'PagesAdmin::layananAdmin');
 $routes->get('/admin/pdg', 'PagesAdmin::pdg');
 $routes->get('/admin/pds', 'PagesAdmin::pds');
