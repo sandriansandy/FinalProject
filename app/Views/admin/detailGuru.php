@@ -23,42 +23,32 @@
 						<tr>
 							<td>NIP </td>
 							<td>:</td>
-							<td>12345</td>
+							<td><?= $identitas['NIP']; ?></td>
 						</tr>
 						<tr>
 							<td>Nama </td>
 							<td>:</td>
-							<td>Andhika Alauddin Mifta</td>
+							<td><?= $identitas['Nama']; ?></td>
 						</tr>
 						<tr>
 							<td>Jenis Kelamin </td>
 							<td>:</td>
-							<td>Laki-laki</td>
+							<td><?= $identitas['jenis_kelamin']; ?></td>
 						</tr>
 						<tr>
 							<td>Mata Pelajaran </td>
 							<td>:</td>
-							<td>Biologi</td>
-						</tr>
-						<tr>
-							<td>Pendidikan Terakhir </td>
-							<td>:</td>
-							<td>S1</td>
-						</tr>
-						<tr>
-							<td>Status </td>
-							<td>:</td>
-							<td>Aktif</td>
+							<td><?= $identitas['Nama_mapel']; ?></td>
 						</tr>
 						<tr>
 							<td>Alamat </td>
 							<td>:</td>
-							<td>Jl. Suka-suka 45, Sukasari, Palembang</td>
+							<td><?= $identitas['Alamat']; ?></td>
 						</tr>
 						<tr>
 							<td>Mulai Mengajar </td>
 							<td>:</td>
-							<td>15 Juni 2005</td>
+							<td><?= $identitas['tgl_masuk']; ?></td>
 						</tr>
 					</table>
 				</div>

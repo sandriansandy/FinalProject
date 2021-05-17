@@ -2,13 +2,23 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelGuru;
+
 class PagesGuru extends BaseController
 {
     // GURU
+    protected $identitasGuru;
+    public function __construct()
+    {
+        $this->identitasGuru = new ModelGuru();
+    }
+
     public function indexGuru()
     {
+        $guru = $this->identitasGuru->findAll();
         $data['judul'] = 'Home | SINOFAK';
         $data['content'] = 'index';
+        $data['guru'] = $guru;
         return view('guru/index', $data);
     }
     public function jadwalGuru()

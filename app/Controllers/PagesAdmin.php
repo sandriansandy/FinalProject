@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelGuru;
 use App\Models\ModelSiswa;
 use App\Models\ModelKelas;
+use App\Models\ModelMapel;
 
 class PagesAdmin extends BaseController
 {
@@ -44,10 +46,12 @@ class PagesAdmin extends BaseController
         $data['content'] = 'presensi';
         return view('admin/presensi', $data);
     }
-    public function detailGuruAdmin()
+    public function detailGuruAdmin($NIP)
     {
+        $this->guru = new ModelGuru();
         $data['judul'] = 'Detail Guru | SINOFAK';
         $data['content'] = 'detailGuru';
+        $data['identitas'] = $this->guru->getGuruAdmin($NIP);
         return view('admin/detailGuru', $data);
     }
     public function detailSiswaAdmin($NISN)
@@ -84,8 +88,10 @@ class PagesAdmin extends BaseController
     }
     public function pdg()
     {
+        $this->guru = new ModelGuru();
         $data['judul'] = 'Data Guru | SINOFAK';
         $data['content'] = 'pdg';
+        $data['identitas'] = $this->guru->getGuruAdmin();
         return view('admin/pdg', $data);
     }
     public function pds()
@@ -98,8 +104,10 @@ class PagesAdmin extends BaseController
     }
     public function tambahGuruAdmin()
     {
+        $this->mapel = new ModelMapel();
         $data['judul'] = 'Tambah Guru | SINOFAK';
         $data['content'] = 'tambahGuru';
+        $data['mapel'] = $this->mapel->getMapel();
         return view('admin/tambahGuru', $data);
     }
     public function tambahJadwalAdmin()
@@ -121,6 +129,15 @@ class PagesAdmin extends BaseController
     public function simpanSiswa()
     {
         $this->siswa = new ModelSiswa();
+
+        $foto = $this->request->getFile('foto');
+        if ($foto->getError() == 4) {
+            $namaFoto = 'user.png';
+        } else {
+            $ext = $foto->getClientExtension();
+            $namaFoto = $this->request->getVar('NISN') . '.' . $ext;
+            $foto->move('assets/img/profil_siswa', $namaFoto);
+        };
         $this->siswa->insert([
             'NISN' => $this->request->getVar('NISN'),
             'Nama' => $this->request->getVar('Nama'),
@@ -128,9 +145,10 @@ class PagesAdmin extends BaseController
             'Angkatan' => $this->request->getVar('Angkatan'),
             'Alamat' => $this->request->getVar('Alamat'),
             'tgl_masuk' => $this->request->getVar('Tgl_Masuk'),
-            'foto' => $this->request->getVar('foto'),
+            'foto' => $namaFoto,
             'id_kelas' => $this->request->getVar('kelas'),
-            'jenis_kelamin' => $this->request->getVar('gender')
+            'jenis_kelamin' => $this->request->getVar('gender'),
+            'password' => md5($this->request->getVar('NISN'))
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
@@ -138,5 +156,34 @@ class PagesAdmin extends BaseController
         // }
         // session()->setFlashdata('pesan', 'Data Gagal Ditambahkan');
         // return redirect()->to('/admin/pds');
+    }
+
+    public function simpanGuru()
+    {
+        $this->guru = new ModelGuru();
+        $this->guru->insert([
+            'NIP' => $this->request->getVar('NIP'),
+            'Nama' => $this->request->getVar('Nama'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
+            'TTL' => $this->request->getVar('TTL'),
+            'Alamat' => $this->request->getVar('Alamat'),
+            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
+            'id_mapel' => $this->request->getVar('mapel'),
+            'no_hp' => $this->request->getVar('no_hp'),
+            'password' => md5($this->request->getVar('NIP'))
+        ]);
+        // dd($this->request->getVar());
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/pdg');
+    }
+
+    public function hapusSiswaAdmin($NISN)
+    {
+        $this->siswa = new ModelSiswa();
+        $this->siswa->delete($NISN);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/admin/pds');
     }
 }
