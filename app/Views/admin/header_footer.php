@@ -35,7 +35,7 @@
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-danger update-pro" href="<?php base_url() ?>/login" title="Logout"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
+					<a class="btn btn-danger update-pro" href="<?php base_url() ?>/logout" title="Logout"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -77,12 +77,21 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
+<<<<<<< HEAD
 	<script src="../assets/vendor/jquery/jquery.min.js"></script>
 	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="../assets/scripts/klorofil-common.js"></script>
+=======
+	<script src="<?php base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
+	<script src="<?php base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?php base_url() ?>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="<?php base_url() ?>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="<?php base_url() ?>assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="<?php base_url() ?>assets/scripts/klorofil-common.js"></script>
+>>>>>>> master
 </body>
 
 </html>

@@ -26,7 +26,7 @@ class PagesSiswa extends BaseController
 		$this->siswa = new ModelSiswa();
 		$data['judul'] = 'Home | SINOFAK';
 		$data['content'] = 'index';
-		$data['identitas'] = $this->siswa->getSiswa();
+		$data['identitas'] = $this->siswa->getSiswaAdmin(session('username'));
 		return view('siswa/Index', $data);
 
 

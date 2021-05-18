@@ -35,7 +35,7 @@
 					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
 				</div>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-danger update-pro" href="<?php base_url() ?>/login" title="Logout"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
+					<a class="btn btn-danger update-pro" href="<?php base_url() ?>/logout" title="Logout"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">

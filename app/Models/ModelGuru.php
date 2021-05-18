@@ -17,4 +17,8 @@ class ModelGuru extends Model
         }
         return $this->join('mapel', 'mapel.id_mapel = guru.id_mapel')->where(['NIP' => $NIP])->first();
     }
+
+    public function login($NIP,$pass)
+    {
+        return $this->where(['NIP' => $NIP, 'password' => $pass])->countAllResults();    }
 }

@@ -32,21 +32,21 @@
 							<div class="header">
 								<h1 class="heading"><img src="../assets/img/icon.png" alt="" style="width: 48px; height: 48px;"> SINOFAK</h1>
 								<p class="lead">Login to your account</p>
+								<?php if (session()->getFlashdata('pesan')) : ?>
+									<div class="alert alert-danger" role="alert"><?= session()->getFlashdata('pesan') ?></div>
+								<?php endif; ?>
 							</div>
-							<form class="form-auth-small" action="login-action.php" method="POST">
+							<form class="form-auth-small" action="<?php base_url()?>/prosesLogin" method="POST">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input class="form-control" placeholder="Username" type="text" id="uname">
+									<input class="form-control" placeholder="Username" type="text" id="uname" name="username">
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input class="form-control" placeholder="Password" type="password" id="pw">
+									<input class="form-control" placeholder="Password" type="password" id="pw" name="pass">
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
-								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>
-								</div>
 							</form>
 						</div>
 					</div>

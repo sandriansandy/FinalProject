@@ -35,6 +35,11 @@ $routes->setAutoRoute(true);
 
 // LOGIN
 $routes->get('/login', 'Login::Login');
+$routes->post('/prosesLogin', 'Login::prosesLogin');
+$routes->get('/gantiPassword', 'Login::gantiPassword');
+$routes->post('/simpanPassword', 'Login::simpanPassword');
+$routes->get('/logout','Login::Logout');
+
 // HALAMAN SISWA
 $routes->get('/siswa', 'PagesSiswa::IndexSiswa');
 $routes->get('/siswa/jadwal', 'PagesSiswa::jadwalSiswa');

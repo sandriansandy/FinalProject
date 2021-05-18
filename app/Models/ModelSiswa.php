@@ -22,4 +22,9 @@ class ModelSiswa extends Model
         }
         return $this->where(['NISN' => $NISN])->first();
     }
+
+    public function login($NISN,$pass)
+    {
+        return $this->where(['NISN' => $NISN,'password' =>$pass])->countAllResults();        
+    }
 }

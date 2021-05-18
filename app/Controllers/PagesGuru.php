@@ -15,7 +15,7 @@ class PagesGuru extends BaseController
 
     public function indexGuru()
     {
-        $guru = $this->identitasGuru->findAll();
+        $guru = $this->identitasGuru->getGuruAdmin(session('username'));
         $data['judul'] = 'Home | SINOFAK';
         $data['content'] = 'index';
         $data['guru'] = $guru;
