@@ -8,7 +8,7 @@ class ModelJadwal extends Model
 {
     protected $table = 'jadwal';
     protected $primaryKey = 'id_jadwal';
-    protected $allowedFields = ['id_jadwal', 'id_mapel', 'id_kelas', 'NIP', 'hari', 'jam_mulai', 'jam_selesai'];
+    protected $allowedFields = ['id_jadwal', 'id_mapel', 'id_kelas', 'NIP', 'hari', 'jam_mulai', 'jam_selesai', 'Nama_mapel', 'Nama', 'nama'];
 
     public function getJadwalAdmin()
     {

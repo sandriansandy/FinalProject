@@ -51,6 +51,8 @@ $routes->get('/guru', 'PagesGuru::IndexGuru');
 $routes->get('/guru/detail', 'PagesGuru::detailPresensiGuru');
 $routes->get('/guru/jadwal', 'PagesGuru::jadwalGuru');
 $routes->get('/guru/nilai', 'PagesGuru::nilaiGuru');
+$routes->get('/guru/simpanNilai', 'PagesGuru::simpanNilai');
+$routes->get('/guru/tambahNilaiGuru', 'PagesGuru::tambahNilaiGuru');
 $routes->get('/guru/nilaiKelas', 'PagesGuru::nilaiKelasGuru');
 $routes->get('/guru/presensi', 'PagesGuru::presensiGuru');
 // HALAMAN ADMIN
@@ -75,9 +77,13 @@ $routes->get('/admin/pds', 'PagesAdmin::pds');
 $routes->get('/admin/tambahGuru', 'PagesAdmin::tambahGuruAdmin');
 $routes->get('/admin/tambahJadwal', 'PagesAdmin::tambahJadwalAdmin');
 $routes->get('/admin/tambahSiswa', 'PagesAdmin::tambahSiswaAdmin');
+$routes->get('/admin/tambahKelas', 'PagesAdmin::tambahKelasAdmin');
+$routes->get('/admin/tambahMapel', 'PagesAdmin::tambahMapelAdmin');
 $routes->post('/admin/simpanSiswa', 'PagesAdmin::simpanSiswa');
 $routes->post('/admin/simpanGuru', 'PagesAdmin::simpanGuru');
 $routes->post('/admin/simpanJadwal', 'PagesAdmin::simpanJadwal');
+$routes->post('/admin/simpanKelas', 'PagesAdmin::simpanKelas');
+$routes->post('/admin/simpanMapel', 'PagesAdmin::simpanMapel');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

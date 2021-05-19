@@ -10,6 +10,9 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <p class="lead">Data Nilai Siswa</p>
                 </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <a href="/guru/tambahNilaiGuru" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
+                </div>
             </div>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
@@ -20,47 +23,28 @@
                         <th>Tugas 1</th>
                         <th>Tugas 2</th>
                         <th>UTS</th>
+                        <th>Tugas 3</th>
+                        <th>Tugas 4</th>
                         <th>UAS</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>109283</td>
-                        <td>Sandrian Yulian Firmansyah Noorihsan</td>
-                        <td>1</td>
-                        <td>69</td>
-                        <td>62</td>
-                        <td>71</td>
-                        <td>58</td>
-                        <td>
-                            <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>56212</td>
-                        <td>Hanifa Putri Rahima</td>
-                        <td>1</td>
-                        <td>76</td>
-                        <td>85</td>
-                        <td>90</td>
-                        <td>89</td>
-                        <td>
-                            <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>56212</td>
-                        <td>Alizza Iman R.</td>
-                        <td>1</td>
-                        <td>88</td>
-                        <td>78</td>
-                        <td>86</td>
-                        <td>89</td>
-                        <td>
-                            <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                        </td>
-                    </tr>
+                    <?php foreach ($identitas as $n) : ?>
+                        <tr>
+                            <td><?= $n['NISN']; ?></td>
+                            <td><?= $n['Nama']; ?></td>
+                            <td><?= $n['Tugas 1']; ?></td>
+                            <td><?= $n['Tugas 2']; ?></td>
+                            <td><?= $n['UTS']; ?></td>
+                            <td><?= $n['Tugas 3']; ?></td>
+                            <td><?= $n['Tugas 4']; ?></td>
+                            <td><?= $n['UAS']; ?></td>
+                            <td>
+                                <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                     <tr>
@@ -70,6 +54,8 @@
                         <th>Tugas 1</th>
                         <th>Tugas 2</th>
                         <th>UTS</th>
+                        <th>Tugas 3</th>
+                        <th>Tugas 4</th>
                         <th>UAS</th>
                         <th>Action</th>
                     </tr>

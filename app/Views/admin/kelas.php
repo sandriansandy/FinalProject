@@ -63,20 +63,20 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <h2>Tambah Kelas</h2>
-                    <form action="" method="post">
+                    <form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input class="form-control" placeholder="Kode Kelas" type="text" id="NISN" name="kode" required>
+                            <input class="form-control" placeholder="Kode Kelas" type="text" id="id_kelas" name="id_kelas" required>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                            <input class="form-control" placeholder="Nama Kelas" type="text" id="NISN" name="nama" required>
+                            <input class="form-control" placeholder="Nama Kelas" type="text" id="nama" name="kelas" required>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            <input class="form-control" placeholder="Tahun Ajaran" type="text" id="NISN" name="tahun" required>
+                            <input class="form-control" placeholder="Tahun Ajaran" type="text" id="tahun_ajaran" name="tahun_ajaran" required>
                         </div>
                         <br>
                         <input type="submit" value="SUBMIT" class="btn btn-success">

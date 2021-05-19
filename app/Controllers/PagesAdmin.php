@@ -133,7 +133,7 @@ class PagesAdmin extends BaseController
         $data['judul'] = 'Tambah Jadwal | SINOFAK';
         $data['content'] = 'tambahJadwal';
         $data['mapel'] = $this->mapel->getMapel();
-        $data['kelas'] = $this->kelas->getKelas();
+        $data['kelas'] = $this->kelas->getKelasAdmin();
         $data['identitas'] = $this->guru->getGuruAdmin();
         return view('admin/tambahJadwal', $data);
     }
@@ -144,6 +144,20 @@ class PagesAdmin extends BaseController
         $data['content'] = 'tambahSiswa';
         $data['kelas'] = $this->kelas->getKelas();
         return view('admin/tambahSiswa', $data);
+    }
+    public function tambahKelasAdmin()
+    {
+        $this->kelas = new ModelKelas();
+        $data['content'] = 'tambahKelas';
+        $data['kelas'] = $this->kelas->getKelas();
+        return view('admin/tambahKelas', $data);
+    }
+    public function tambahMapelAdmin()
+    {
+        $this->mapel = new ModelMapel();
+        $data['content'] = 'tambahMapel';
+        $data['mapel'] = $this->mapel->getMapel();
+        return view('admin/tambahMapel', $data);
     }
 
 
@@ -224,7 +238,34 @@ class PagesAdmin extends BaseController
         // dd($this->request->getVar());
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
-        return redirect()->to('/admin/pdg');
+        return redirect()->to('/admin/jadwal');
+    }
+
+    public function simpanKelas()
+    {
+        $this->kelas = new ModelKelas();
+        $this->kelas->insert([
+            'id_kelas' => $this->request->getVar('id_kelas'),
+            'nama' => $this->request->getVar('kelas'),
+            'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
+        ]);
+        // dd($this->request->getVar());
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/kelas');
+    }
+
+    public function simpanMapel()
+    {
+        $this->Mapel = new ModelMapel();
+        $this->Mapel->insert([
+            'id_mapel' => $this->request->getVar('id_mapel'),
+            'Nama_mapel' => $this->request->getVar('Nama_mapel'),
+        ]);
+        // dd($this->request->getVar());
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/mapel');
     }
 
     public function hapusSiswaAdmin($NISN)

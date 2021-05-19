@@ -8,7 +8,9 @@ class ModelKelas extends Model
 {
     protected $table = 'kelas';
     protected $primaryKey = 'id_kelas';
-    public function getKelas()
+    protected $allowedFields = ['id_kelas', 'nama', 'tahun_ajaran'];
+
+    public function getKelasAdmin()
     {
         return $this->findAll();
     }

@@ -49,9 +49,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Kode Kelas</th>
-                                <th>Kelas</th>
-                                <th>Tahun Ajaran</th>
+                                <th>Kode Mapel</th>
+                                <th>Nama Mapel</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -59,15 +58,15 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <h2>Tambah Mapel</h2>
-                    <form action="" method="post">
+                    <form action="<?php base_url() ?>/admin/simpanMapel" method="post" enctype="multipart/form-data">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input class="form-control" placeholder="Kode Mapel" type="text" id="NISN" name="kode" required>
+                            <input class="form-control" placeholder="Kode Mapel" type="text" id="id_mapel" name="id_mapel" required>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                            <input class="form-control" placeholder="Nama Mapel" type="text" id="NISN" name="nama" required>
+                            <input class="form-control" placeholder="Nama Mapel" type="text" id="Nama_mapel" name="Nama_mapel" required>
                         </div>
                         <br>
                         <input type="submit" value="SUBMIT" class="btn btn-success">

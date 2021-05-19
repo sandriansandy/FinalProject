@@ -41,11 +41,11 @@
 						<br>
 						<label for="hari">Hari</label>
 						<select class="form-control" name="hari">
-							<option value="cheese">Senin</option>
-							<option value="tomatoes">Selasa</option>
-							<option value="mozarella">Rabu</option>
-							<option value="">Kamis</option>
-							<option value="">Jumat</option>
+							<option>Senin</option>
+							<option>Selasa</option>
+							<option>Rabu</option>
+							<option>Kamis</option>
+							<option>Jumat</option>
 						</select>
 						<br>
 						<label for="jam_mulai">Jam Mulai</label>

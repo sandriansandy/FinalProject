@@ -28,21 +28,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($identitas as $j) ?>
-                    <tr>
-                        <td><?= $j['id_jadwal']; ?></td>
-                        <td><?= $j['Nama_mapel']; ?></td>
-                        <td><?= $j['Nama']; ?></td>
-                        <td><?= $j['nama']; ?></td>
-                        <td><?= $j['hari']; ?></td>
-                        <td><?= $j['jam_mulai']; ?></td>
-                        <td><?= $j['jam_selesai']; ?></td>
-                        <td>
-                            <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                        </td>
-
-                    </tr>
+                    <?php foreach ($identitas as $j) : ?>
+                        <tr>
+                            <td><?= $j['id_jadwal']; ?></td>
+                            <td><?= $j['Nama_mapel']; ?></td>
+                            <td><?= $j['Nama']; ?></td>
+                            <td><?= $j['nama']; ?></td>
+                            <td><?= $j['hari']; ?></td>
+                            <td><?= $j['jam_mulai']; ?></td>
+                            <td><?= $j['jam_selesai']; ?></td>
+                            <td>
+                                <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                                <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                     <tr>
