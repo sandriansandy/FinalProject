@@ -6,6 +6,7 @@ use App\Models\ModelGuru;
 use App\Models\ModelSiswa;
 use App\Models\ModelKelas;
 use App\Models\ModelMapel;
+use App\Models\ModelJadwal;
 
 class PagesAdmin extends BaseController
 {
@@ -24,9 +25,23 @@ class PagesAdmin extends BaseController
     }
     public function jadwalAdmin()
     {
+        $this->jadwal = new ModelJadwal();
         $data['judul'] = 'Jadwal | SINOFAK';
         $data['content'] = 'jadwal';
+        $data['identitas'] = $this->jadwal->getJadwalAdmin();
         return view('admin/jadwal', $data);
+    }
+    public function kelas()
+    {
+        $data['judul'] = 'Kelas | SINOFAK';
+        $data['content'] = 'kelas';
+        return view('admin/kelas', $data);
+    }
+    public function mapel()
+    {
+        $data['judul'] = 'Mata Pelajaran | SINOFAK';
+        $data['content'] = 'mapel';
+        return view('admin/mapel', $data);
     }
     public function nilaiAdmin()
     {
@@ -112,8 +127,14 @@ class PagesAdmin extends BaseController
     }
     public function tambahJadwalAdmin()
     {
+        $this->mapel = new ModelMapel();
+        $this->kelas = new ModelKelas();
+        $this->guru = new ModelGuru();
         $data['judul'] = 'Tambah Jadwal | SINOFAK';
         $data['content'] = 'tambahJadwal';
+        $data['mapel'] = $this->mapel->getMapel();
+        $data['kelas'] = $this->kelas->getKelas();
+        $data['identitas'] = $this->guru->getGuruAdmin();
         return view('admin/tambahJadwal', $data);
     }
     public function tambahSiswaAdmin()
@@ -181,6 +202,24 @@ class PagesAdmin extends BaseController
             'foto' => $namaFoto,
             'no_hp' => $this->request->getVar('no_hp'),
             'password' => md5($this->request->getVar('NIP'))
+        ]);
+        // dd($this->request->getVar());
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/pdg');
+    }
+
+    public function simpanJadwal()
+    {
+        $this->jadwal = new ModelJadwal();
+
+        $this->jadwal->insert([
+            'id_jadwal' => $this->request->getVar('id_jadwal'),
+            'id_mapel' => $this->request->getVar('mapel'),
+            'NIP' => $this->request->getVar('Nama'),
+            'hari' => $this->request->getVar('hari'),
+            'jam_mulai' => $this->request->getVar('jam_mulai'),
+            'jam_selesai' => $this->request->getVar('jam_selesai')
         ]);
         // dd($this->request->getVar());
 

@@ -8,16 +8,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <p class="lead">Data Pelajaran</p>
+                    <p class="lead">Jadwal Pelajaran</p>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <a href="tambahJadwal.html" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
+                    <a href="/admin/tambahJadwal" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
                 </div>
             </div>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Kode Kelas</th>
+                        <th>Kode Jadwal</th>
                         <th>Mata Pelajaran</th>
                         <th>Nama Guru</th>
                         <th>Kelas</th>
@@ -28,45 +28,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($identitas as $j) ?>
                     <tr>
-                        <td>MIPA01</td>
-                        <td>Matematika</td>
-                        <td>Subur Budiman</td>
-                        <td>XII Mipa 1</td>
-                        <td>Senin</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
+                        <td><?= $j['id_jadwal']; ?></td>
+                        <td><?= $j['Nama_mapel']; ?></td>
+                        <td><?= $j['Nama']; ?></td>
+                        <td><?= $j['nama']; ?></td>
+                        <td><?= $j['hari']; ?></td>
+                        <td><?= $j['jam_mulai']; ?></td>
+                        <td><?= $j['jam_selesai']; ?></td>
                         <td>
                             <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
                             <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                         </td>
 
-                    </tr>
-                    <tr>
-                        <td>IPS03</td>
-                        <td>Agama Islam</td>
-                        <td>Andi Susanto</td>
-                        <td>XII IPS 3</td>
-                        <td>Selasa</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>
-                            <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>IPS01</td>
-                        <td>Penjasorkes</td>
-                        <td>Eko Edi Susilo</td>
-                        <td>XII IPS 1</td>
-                        <td>Rabu</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>
-                            <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                        </td>
                     </tr>
                 </tbody>
                 <tfoot>

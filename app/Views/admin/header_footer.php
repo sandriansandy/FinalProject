@@ -55,7 +55,17 @@
 						<li><a href="<?php base_url() ?>/admin" class="active"><i class="glyphicon glyphicon-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/pds" class=""><i class="glyphicon glyphicon-education"></i> <span>Data Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/pdg" class=""><i class="glyphicon glyphicon-user"></i> <span>Data Guru</span></a></li>
-						<li><a href="<?php base_url() ?>/admin/jadwal" class=""><i class="glyphicon glyphicon-calendar"></i> <span>Jadwal Pelajaran</span></a></li>
+						<li>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-calendar"></i> <span>Akademik</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="<?php base_url() ?>/admin/jadwal" class="">Jadwal</a></li>
+									<li><a href="<?php base_url() ?>/admin/kelas" class="">Kelas</a></li>
+									<li><a href="<?php base_url() ?>/admin/mapel" class="">Mata Pelajaran</a></li>
+								</ul>
+							</div>
+						</li>
+
 						<li><a href="<?php base_url() ?>/admin/nilai" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/presensi" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/layanan" class=""><i class="glyphicon glyphicon-file"></i> <span>Layanan Kesiswaan</span></a></li>
@@ -77,21 +87,21 @@
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
-<<<<<<< HEAD
-	<script src="../assets/vendor/jquery/jquery.min.js"></script>
-	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
-	<script src="../assets/scripts/klorofil-common.js"></script>
-=======
-	<script src="<?php base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-	<script src="<?php base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?php base_url() ?>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="<?php base_url() ?>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="<?php base_url() ?>assets/vendor/chartist/js/chartist.min.js"></script>
-	<script src="<?php base_url() ?>assets/scripts/klorofil-common.js"></script>
->>>>>>> master
+	<<<<<<< HEAD <script src="../assets/vendor/jquery/jquery.min.js">
+		</script>
+		<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
+		<script src="../assets/scripts/klorofil-common.js"></script>
+		=======
+		<script src="<?php base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
+		<script src="<?php base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<?php base_url() ?>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="<?php base_url() ?>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="<?php base_url() ?>assets/vendor/chartist/js/chartist.min.js"></script>
+		<script src="<?php base_url() ?>assets/scripts/klorofil-common.js"></script>
+		>>>>>>> master
 </body>
 
 </html>

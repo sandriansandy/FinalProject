@@ -38,7 +38,7 @@ $routes->get('/login', 'Login::Login');
 $routes->post('/prosesLogin', 'Login::prosesLogin');
 $routes->get('/gantiPassword', 'Login::gantiPassword');
 $routes->post('/simpanPassword', 'Login::simpanPassword');
-$routes->get('/logout','Login::Logout');
+$routes->get('/logout', 'Login::Logout');
 
 // HALAMAN SISWA
 $routes->get('/siswa', 'PagesSiswa::IndexSiswa');
@@ -58,6 +58,8 @@ $routes->get('/admin', 'PagesAdmin::IndexAdmin');
 $routes->get('/admin/detailPresensi', 'PagesAdmin::detailPresensiAdmin');
 $routes->get('/admin/jadwal', 'PagesAdmin::jadwalAdmin');
 $routes->get('/admin/nilai/', 'PagesAdmin::nilaiAdmin');
+$routes->get('/admin/kelas/', 'PagesAdmin::kelas');
+$routes->get('/admin/mapel/', 'PagesAdmin::mapel');
 $routes->get('/admin/nilaiKelas', 'PagesAdmin::nilaiKelasAdmin');
 $routes->get('/admin/presensi', 'PagesAdmin::presensiAdmin');
 $routes->get('/admin/detailGuru/(:any)', 'PagesAdmin::detailGuruAdmin/$1');
@@ -75,6 +77,7 @@ $routes->get('/admin/tambahJadwal', 'PagesAdmin::tambahJadwalAdmin');
 $routes->get('/admin/tambahSiswa', 'PagesAdmin::tambahSiswaAdmin');
 $routes->post('/admin/simpanSiswa', 'PagesAdmin::simpanSiswa');
 $routes->post('/admin/simpanGuru', 'PagesAdmin::simpanGuru');
+$routes->post('/admin/simpanJadwal', 'PagesAdmin::simpanJadwal');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
