@@ -23,7 +23,7 @@ class ModelJadwal extends Model
 
         return $this->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
-            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['NIP' => $NIP])->findAll();
+            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['guru.NIP' => $NIP])->findAll();
     }
 
     public function getJadwalSiswa($NISN)
@@ -31,6 +31,6 @@ class ModelJadwal extends Model
 
         return $this->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
-            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['NIP' => $NISN])->findAll();
+            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['NISN' => $NISN])->findAll();
     }
 }

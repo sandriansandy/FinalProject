@@ -22,30 +22,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>Biologi</td>
-                                <td>
-                                    <a class="btn btn-warning" href="editMapel.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                                    <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Matematika</td>
-                                <td>
-                                    <a class="btn btn-warning" href="editMapel.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                                    <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>Fisika</td>
-                                <td>
-                                    <a class="btn btn-warning" href="editMapel.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                                    <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                                </td>
-                            </tr>
+                            <?php foreach ($mapel as $m) : ?>
+                                <tr>
+                                    <td><?= $m['id_mapel']; ?></td>
+                                    <td><?= $m['Nama_mapel']; ?></td>
+                                    <td>
+                                        <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                                        <a class="btn btn-danger" href="<?php base_url() ?> /admin/hapusMapel/<?= $m['id_mapel']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                         <tfoot>
                             <tr>

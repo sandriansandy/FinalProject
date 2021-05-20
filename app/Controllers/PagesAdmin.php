@@ -7,6 +7,7 @@ use App\Models\ModelSiswa;
 use App\Models\ModelKelas;
 use App\Models\ModelMapel;
 use App\Models\ModelJadwal;
+use App\Models\ModelLayanan;
 
 class PagesAdmin extends BaseController
 {
@@ -28,19 +29,24 @@ class PagesAdmin extends BaseController
         $this->jadwal = new ModelJadwal();
         $data['judul'] = 'Jadwal | SINOFAK';
         $data['content'] = 'jadwal';
-        $data['identitas'] = $this->jadwal->getJadwalAdmin();
+        $data['jadwal'] = $this->jadwal->getJadwalAdmin();
+        //dd($data);
         return view('admin/jadwal', $data);
     }
     public function kelas()
     {
+        $this->kelas = new ModelKelas();
         $data['judul'] = 'Kelas | SINOFAK';
         $data['content'] = 'kelas';
+        $data['kelas'] = $this->kelas->getKelasAdmin();
         return view('admin/kelas', $data);
     }
     public function mapel()
     {
+        $this->mapel = new ModelMapel();
         $data['judul'] = 'Mata Pelajaran | SINOFAK';
         $data['content'] = 'mapel';
+        $data['mapel'] = $this->mapel->getMapelAdmin();
         return view('admin/mapel', $data);
     }
     public function nilaiAdmin()
@@ -97,8 +103,10 @@ class PagesAdmin extends BaseController
     }
     public function layananAdmin()
     {
+        $this->layanan = new ModelLayanan();
         $data['judul'] = 'Layanan | SINOFAK';
         $data['content'] = 'layanan';
+        $data['layanan'] = $this->layanan->getLayanan();
         return view('admin/layanan', $data);
     }
     public function pdg()
@@ -132,7 +140,7 @@ class PagesAdmin extends BaseController
         $this->guru = new ModelGuru();
         $data['judul'] = 'Tambah Jadwal | SINOFAK';
         $data['content'] = 'tambahJadwal';
-        $data['mapel'] = $this->mapel->getMapel();
+        $data['mapel'] = $this->mapel->getMapelAdmin();
         $data['kelas'] = $this->kelas->getKelasAdmin();
         $data['identitas'] = $this->guru->getGuruAdmin();
         return view('admin/tambahJadwal', $data);
@@ -230,6 +238,7 @@ class PagesAdmin extends BaseController
         $this->jadwal->insert([
             'id_jadwal' => $this->request->getVar('id_jadwal'),
             'id_mapel' => $this->request->getVar('mapel'),
+            'id_kelas' => $this->request->getVar('kelas'),
             'NIP' => $this->request->getVar('Nama'),
             'hari' => $this->request->getVar('hari'),
             'jam_mulai' => $this->request->getVar('jam_mulai'),
@@ -245,7 +254,7 @@ class PagesAdmin extends BaseController
     {
         $this->kelas = new ModelKelas();
         $this->kelas->insert([
-            'id_kelas' => $this->request->getVar('id_kelas'),
+            'id_kelas' => $this->request->getVar('kode'),
             'nama' => $this->request->getVar('kelas'),
             'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
         ]);
@@ -292,5 +301,32 @@ class PagesAdmin extends BaseController
 
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
         return redirect()->to('/admin/pdg');
+    }
+
+    public function hapusJadwalAdmin($jadwal)
+    {
+        $this->jadwal = new ModelJadwal();
+        $this->jadwal->delete($jadwal);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/admin/jadwal');
+    }
+
+    public function hapusKelasAdmin($kelas)
+    {
+        $this->kelas = new ModelKelas();
+        $this->kelas->delete($kelas);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/admin/kelas');
+    }
+
+    public function hapusMapelAdmin($mapel)
+    {
+        $this->mapel = new ModelMapel();
+        $this->mapel->delete($mapel);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/admin/mapel');
     }
 }

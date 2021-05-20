@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelGuru;
+use App\Models\ModelJadwal;
 use App\Models\ModelMapel;
 use App\Models\ModelNilai;
 use App\Models\ModelSiswa;
@@ -26,30 +27,36 @@ class PagesGuru extends BaseController
     }
     public function jadwalGuru()
     {
+        $this->jadwalGuru = new ModelJadwal();
+        $data['jadwal'] = $this->jadwalGuru->getJadwalGuru(session('username'));
         $data['judul'] = 'Jadwal | SINOFAK';
         $data['content'] = 'jadwal';
         return view('guru/jadwal', $data);
     }
     public function nilaiGuru()
     {
-        $this->nilai = new ModelNilai();
-        $this->mapel = new ModelMapel();
         $data['judul'] = 'Nilai | SINOFAK';
         $data['content'] = 'nilai';
-        $data['identitas'] = $this->nilai->getNilaiGuru();
-        $data['mapel'] = $this->mapel->getMapel();
         return view('guru/nilai', $data);
     }
     public function tambahNilaiGuru()
     {
+        $this->nilai = new ModelNilai();
+        $this->mapel = new ModelMapel();
         $data['judul'] = 'Tambah Nilai | SINOFAK';
         $data['content'] = 'nilai';
+        $data['nilai'] = $this->nilai->getNilaiGuru();
+        $data['mapel'] = $this->mapel->getMapel();
         return view('guru/tambahNilai', $data);
     }
     public function nilaiKelasGuru()
     {
+        $this->nilai = new ModelNilai();
+        $this->mapel = new ModelMapel();
         $data['judul'] = 'Detail Nilai | SINOFAK';
         $data['content'] = 'nilaiKelas';
+        $data['nilai'] = $this->nilai->getNilaiGuru();
+        $data['mapel'] = $this->mapel->getMapel();
         return view('guru/nilaiKelas', $data);
     }
     public function presensiGuru()
@@ -85,5 +92,14 @@ class PagesGuru extends BaseController
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/guru/nilai');
+    }
+
+    public function hapusJadwalGuru($id_jadwal)
+    {
+        $this->jadwal = new ModelJadwal();
+        $this->jadwal->delete($id_jadwal);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/guru/jadwal');
     }
 }

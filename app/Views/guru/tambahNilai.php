@@ -10,19 +10,26 @@
                 <div class="panel-heading">
                     <h1 class="panel-title">Form Tambah Data</h1>
                 </div>
-                <form action="<?php base_url() ?>/admin/simpanNilai" method="POST" enctype="multipart/form-data">
+                <form action="<?php base_url() ?>/guru/simpanNilai" method="POST" enctype="multipart/form-data">
                     <div class="panel-body">
+                        <label for="id_nilai">Kode Nilai</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input class="form-control" placeholder="id_nilai" type="text" id="id_nilai" name="id_nilai" required>
+                        </div>
+                        <br>
                         <label for="NISN">NISN</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             <input class="form-control" placeholder="NISN" type="text" id="NISN" name="NISN" required>
                         </div>
                         <br>
-                        <label for="Nama">Nama</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input class="form-control" placeholder="Nama" type="text" id="Nama" name="Nama" required>
-                        </div>
+                        <label>Nama Siswa</label>
+                        <select name="nama" id="nama" class="form-control">
+                            <?php foreach ($mapel as $m) : ?>
+                                <option value="<?= $m['NISN']; ?>"><?= $m['nama']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <br>
                         <label>Mata Pelajaran</label>
                         <select name="mapel" id="mapel" class="form-control">

@@ -17,42 +17,26 @@
 			<table id="example" class="table table-striped table-bordered" style="width:100%">
 				<thead>
 					<tr>
+						<th>No.</th>
 						<th>Tanggal</th>
 						<th>Nama</th>
-						<th>Kelas</th>
 						<th>Pengajuan</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>13-11-2019</td>
-						<td>Sandrian Yulian Firmansyah Noorihsan</td>
-						<td>XI MIPA 2</td>
-						<td>Pengajuan Proposal</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span>Download document</a>
-						</td>
+					<?php foreach ($layanan as $l) : ?>
+						<tr>
+							<td><?= $l['id_form']; ?></td>
+							<td><?= $l['tanggal']; ?></td>
+							<td><?= $l['Nama']; ?></td>
+							<td><?= $l['tipe_form']; ?></td>
+							<td>
+								<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span><?= $l['form']; ?></a>
+							</td>
 
-					</tr>
-					<tr>
-						<td>13-05-2019</td>
-						<td>Hanifa Putri Rahima</td>
-						<td>XI MIPA 1</td>
-						<td>Pengajuan Dispensasi</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span>Download document</a>
-						</td>
-					</tr>
-					<tr>
-						<td>13-05-2019</td>
-						<td>Alizza Iman R.</td>
-						<td>XII Bahasa 2</td>
-						<td>Pengajuan Proposal</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span>Download document</a>
-						</td>
-					</tr>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>

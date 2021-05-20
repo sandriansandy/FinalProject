@@ -11,7 +11,7 @@
                     <p class="lead">Jadwal Pelajaran</p>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <a href="/admin/tambahJadwal" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
+                    <a href="/admin/tambahJadwalAdmin" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
                 </div>
             </div>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($identitas as $j) : ?>
+                    <?php foreach ($jadwal as $j) : ?>
                         <tr>
                             <td><?= $j['id_jadwal']; ?></td>
                             <td><?= $j['Nama_mapel']; ?></td>
@@ -39,7 +39,7 @@
                             <td><?= $j['jam_selesai']; ?></td>
                             <td>
                                 <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                                <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+                                <a class="btn btn-danger" href="<?php base_url() ?> /admin/hapusJadwal/<?= $j['id_jadwal']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

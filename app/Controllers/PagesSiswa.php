@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelSiswa;
+use App\Models\ModelLayanan;
 
 class PagesSiswa extends BaseController
 {
@@ -42,8 +43,10 @@ class PagesSiswa extends BaseController
 	}
 	public function layananSiswa()
 	{
+		$this->layanan = new ModelLayanan();
 		$data['judul'] = 'Layanan | SINOFAK';
 		$data['content'] = 'layanan';
+		$data['layanan'] = $this->layanan->getLayanan();
 		return view('siswa/layanan', $data);
 	}
 	public function nilaiSiswa()

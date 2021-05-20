@@ -10,7 +10,7 @@ class ModelMapel extends Model
     protected $primaryKey = 'id_mapel';
     protected $allowedFields = ['id_mapel', 'Nama_mapel'];
 
-    public function getMapel()
+    public function getMapelAdmin()
     {
         return $this->findAll();
     }
