@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/chartist/css/chartist-custom.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -56,8 +58,8 @@
 						<li><a href="<?php base_url() ?>/admin/pds" class=""><i class="glyphicon glyphicon-education"></i> <span>Data Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/pdg" class=""><i class="glyphicon glyphicon-user"></i> <span>Data Guru</span></a></li>
 						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-calendar"></i> <span>Akademik</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
+							<a href="#akademik" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-calendar"></i> <span>Akademik</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="akademik" class="collapse ">
 								<ul class="nav">
 									<li><a href="<?php base_url() ?>/admin/jadwal" class="">Jadwal</a></li>
 									<li><a href="<?php base_url() ?>/admin/kelas" class="">Kelas</a></li>
@@ -68,7 +70,15 @@
 
 						<li><a href="<?php base_url() ?>/admin/nilai" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/presensi" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
-						<li><a href="<?php base_url() ?>/admin/layanan" class=""><i class="glyphicon glyphicon-file"></i> <span>Layanan Kesiswaan</span></a></li>
+						<li>
+							<a href="#layanan" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-file"></i> <span>Layanan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="layanan" class="collapse ">
+								<ul class="nav">
+									<li><a href="<?php base_url() ?>/admin/riwayatLayanan" class="">Riwayat Layanan</a></li>
+									<li><a href="<?php base_url() ?>/admin/layanan" class="">Tambah Template Berkas</a></li>
+								</ul>
+							</div>
+						</li>
 					</ul>
 				</nav>
 			</div>

@@ -18,13 +18,6 @@
 							<input class="form-control" placeholder="id_jadwal" type="text" id="id_jadwal" name="id_jadwal" required>
 						</div>
 						<br>
-						<label>Mata Pelajaran</label>
-						<select class="form-control" id="mapel" name="mapel">
-							<?php foreach ($mapel as $m) : ?>
-								<option value="<?= $m['id_mapel'] ?>"><?= $m['Nama_mapel'] ?></option>
-							<?php endforeach; ?>
-						</select>
-						<br>
 						<label for="Nama">Nama Guru</label>
 						<select class="form-control" name="Nama">
 							<?php foreach ($identitas as $i) : ?>

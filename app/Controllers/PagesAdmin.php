@@ -130,7 +130,7 @@ class PagesAdmin extends BaseController
         $this->mapel = new ModelMapel();
         $data['judul'] = 'Tambah Guru | SINOFAK';
         $data['content'] = 'tambahGuru';
-        $data['mapel'] = $this->mapel->getMapel();
+        $data['mapel'] = $this->mapel->getMapelAdmin();
         return view('admin/tambahGuru', $data);
     }
     public function tambahJadwalAdmin()
@@ -150,14 +150,14 @@ class PagesAdmin extends BaseController
         $this->kelas = new ModelKelas();
         $data['judul'] = 'Tambah Siswa | SINOFAK';
         $data['content'] = 'tambahSiswa';
-        $data['kelas'] = $this->kelas->getKelas();
+        $data['kelas'] = $this->kelas->getKelasAdmin();
         return view('admin/tambahSiswa', $data);
     }
     public function tambahKelasAdmin()
     {
         $this->kelas = new ModelKelas();
         $data['content'] = 'tambahKelas';
-        $data['kelas'] = $this->kelas->getKelas();
+        $data['kelas'] = $this->kelas->getKelasAdmin();
         return view('admin/tambahKelas', $data);
     }
     public function tambahMapelAdmin()
@@ -234,10 +234,11 @@ class PagesAdmin extends BaseController
     public function simpanJadwal()
     {
         $this->jadwal = new ModelJadwal();
-
+        $this->guru = new ModelGuru();
+        $data = $this->guru->getGuruAdmin($this->request->getVar('Nama'));
         $this->jadwal->insert([
             'id_jadwal' => $this->request->getVar('id_jadwal'),
-            'id_mapel' => $this->request->getVar('mapel'),
+            'id_mapel' => $data['id_mapel'],
             'id_kelas' => $this->request->getVar('kelas'),
             'NIP' => $this->request->getVar('Nama'),
             'hari' => $this->request->getVar('hari'),

@@ -68,8 +68,11 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$('#example').DataTable();
-
+		$('#example').DataTable({
+			"paging": true,
+			"ordering": true,
+			"info": false
+		});
 	});
 </script>
 <?= $this->endSection('content'); ?>

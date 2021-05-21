@@ -56,7 +56,15 @@
 						<li><a href="<?php base_url() ?>/siswa/jadwal" class=""><i class="glyphicon glyphicon-calendar"></i> <span>Jadwal Pelajaran</span></a></li>
 						<li><a href="<?php base_url() ?>/siswa/nilai" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/siswa/presensi" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
-						<li><a href="<?php base_url() ?>/siswa/layanan" class=""><i class="glyphicon glyphicon-file"></i> <span>Layanan Kesiswaan</span></a></li>
+						<li>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-file"></i> <span>Layanan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="<?php base_url() ?>/siswa/riwayatLayanan" class="">Riwayat Layanan</a></li>
+									<li><a href="<?php base_url() ?>/siswa/layanan" class="">Tambah Layanan Baru</a></li>
+								</ul>
+							</div>
+						</li>
 					</ul>
 				</nav>
 			</div>

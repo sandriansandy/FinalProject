@@ -8,46 +8,69 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="lead">Arsip Pengajuan Siswa</p>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<a href="" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
+					<p class="lead">Template Berkas</p>
 				</div>
 			</div>
-			<table id="example" class="table table-striped table-bordered" style="width:100%">
-				<thead>
-					<tr>
-						<th>No.</th>
-						<th>Tanggal</th>
-						<th>Nama</th>
-						<th>Pengajuan</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($layanan as $l) : ?>
-						<tr>
-							<td><?= $l['id_form']; ?></td>
-							<td><?= $l['tanggal']; ?></td>
-							<td><?= $l['Nama']; ?></td>
-							<td><?= $l['tipe_form']; ?></td>
-							<td>
-								<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span><?= $l['form']; ?></a>
-							</td>
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<table id="example" class="table table-striped table-bordered" style="width:100%">
+						<thead>
+							<tr>
+								<th>Kode Berkas</th>
+								<th>Jenis Berkas</th>
+								<th>Berkas</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($layanan as $l) : ?>
+								<tr>
+									<td><?= $l['id_form']; ?></td>
+									<td><?= $l['tanggal']; ?></td>
+									<td><?= $l['Nama']; ?></td>
+									<td><?= $l['tipe_form']; ?></td>
+									<td>
+										<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span><?= $l['form']; ?></a>
+									</td>
 
-						</tr>
-					<?php endforeach; ?>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>Tanggal</th>
-						<th>Nama</th>
-						<th>Kelas</th>
-						<th>Pengajuan</th>
-						<th>Action</th>
-					</tr>
-				</tfoot>
-			</table>
+								</tr>
+							<?php endforeach; ?>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>Kode Berkas</th>
+								<th>Jenis Berkas</th>
+								<th>Berkas</th>
+								<th>Action</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<h2>Tambah Template</h2>
+					<form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
+						<label for="form">Tipe Form</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-book"></i></span>
+							<input class="form-control" placeholder="Tipe Form" type="text" id="form" name="form" required>
+						</div>
+						<br>
+						<label for="tanggal">Tanggal</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+							<input class="form-control" placeholder="YYYY-MM-DD" type="text" id="tanggal" name="tanggal" required>
+						</div>
+						<br>
+						<label for="form">Unggah Form</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-file"></i></span>
+							<input class="form-control" placeholder="Form" type="file" name="form">
+						</div>
+						<br>
+						<input type="submit" value="SUBMIT" class="btn btn-success">
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- END MAIN CONTENT -->

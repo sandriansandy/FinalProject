@@ -21,14 +21,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($layanan as $l) : ?>
-								<tr>
-									<td><?= $l['tipe_form']; ?></td>
-									<td>
-										<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span><?= $l['form']; ?></a>
-									</td>
-								</tr>
-							<?php endforeach; ?>
+							<tr>
+								<td>Dispensasi</td>
+								<td>
+									<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span></a>
+								</td>
+							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
@@ -41,20 +39,22 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<h2>Tambah Pengajuan</h2>
 					<form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
+						<label for="form">Tipe Form</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-book"></i></span>
+							<input class="form-control" placeholder="Tipe Form" type="text" id="form" name="form" required>
+						</div>
+						<br>
 						<label for="tanggal">Tanggal</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 							<input class="form-control" placeholder="YYYY-MM-DD" type="text" id="tanggal" name="tanggal" required>
 						</div>
 						<br>
+						<label for="form">Unggah Form</label>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input class="form-control" placeholder="Kode Kelas" type="text" id="id_kelas" name="kode" required>
-						</div>
-						<br>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-book"></i></span>
-							<input class="form-control" placeholder="Nama Kelas" type="text" id="nama" name="kelas" required>
+							<span class="input-group-addon"><i class="fa fa-file"></i></span>
+							<input class="form-control" placeholder="Form" type="file" name="form">
 						</div>
 						<br>
 						<input type="submit" value="SUBMIT" class="btn btn-success">
