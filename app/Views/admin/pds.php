@@ -17,7 +17,7 @@
 					<a href="<?php base_url() ?> /admin/tambahSiswa" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
 				</div>
 			</div>
-			<table id="example" class="table table-striped table-bordered" style="width:100%">
+			<table id="example" class="table table-bordered" style="width:100%">
 				<thead>
 					<tr>
 						<th>NISN</th>
@@ -69,9 +69,12 @@
 <script>
 	$(document).ready(function() {
 		$('#example').DataTable({
-			"paging": true,
-			"ordering": true,
-			"info": false
+			pageLength: 10,
+    		filter: true,
+    		deferRender: true,
+		    scrollY: 200,
+		    scrollCollapse: true,
+		    scroller: true
 		});
 	});
 </script>

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../assets/vendor/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="../assets/vendor/chartist/css/chartist-custom.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -40,7 +41,7 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="">
-							<a class="update-pro" href="#" title="Upgrade to Pro" disabled><img src="../assets/img/user.png" class="img-circle" alt="Avatar"><span>Halo, Admin</span></a>
+							<a class="update-pro" href="#" title="Upgrade to Pro" disabled><img src="../assets/img/user.png" class="img-circle" alt="Avatar"><span>Halo, <?= session('role')?></span></a>
 						</li>
 					</ul>
 				</div>
@@ -73,13 +74,6 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- Javascript -->
-	<script src="../assets/vendor/jquery/jquery.min.js"></script>
-	<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
-	<script src="../assets/scripts/klorofil-common.js"></script>
 </body>
 
 </html>

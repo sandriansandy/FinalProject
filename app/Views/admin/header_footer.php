@@ -11,12 +11,10 @@
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/vendor/chartist/css/chartist-custom.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css">
 
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="<?php base_url() ?>/assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="<?php base_url() ?>/assets/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
@@ -96,22 +94,6 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- Javascript -->
-	<<<<<<< HEAD <script src="../assets/vendor/jquery/jquery.min.js">
-		</script>
-		<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-		<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-		<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
-		<script src="../assets/scripts/klorofil-common.js"></script>
-		=======
-		<script src="<?php base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-		<script src="<?php base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="<?php base_url() ?>assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-		<script src="<?php base_url() ?>assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-		<script src="<?php base_url() ?>assets/vendor/chartist/js/chartist.min.js"></script>
-		<script src="<?php base_url() ?>assets/scripts/klorofil-common.js"></script>
-		>>>>>>> master
 </body>
 
 </html>

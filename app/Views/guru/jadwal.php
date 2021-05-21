@@ -18,7 +18,6 @@
                         <th>Kelas</th>
                         <th>Jam Mulai</th>
                         <th>Jam Berakhir</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,10 +29,6 @@
                             <td><?= $jg['nama']; ?></td>
                             <td><?= $jg['jam_mulai']; ?></td>
                             <td><?= $jg['jam_selesai']; ?></td>
-                            <td>
-                                <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                                <a class="btn btn-danger" href="<?php base_url() ?> /guru/hapusJadwal/<?= $jg['id_jadwal']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -43,7 +38,6 @@
                         <th>Kelas</th>
                         <th>Jam Mulai</th>
                         <th>Jam Berakhir</th>
-                        <th>Action</th>
                     </tr>
                 </tfoot>
             </table>
