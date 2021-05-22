@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2021 at 06:15 PM
+-- Generation Time: May 22, 2021 at 08:55 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `berkas` (
   `id_berkas` varchar(100) NOT NULL,
   `jenis_berkas` varchar(255) NOT NULL,
-  `file` varchar(255) NOT NULL
+  `nama_file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `berkas`
+--
+
+INSERT INTO `berkas` (`id_berkas`, `jenis_berkas`, `nama_file`) VALUES
+('dis01', 'Dispensasi', 'Dispensasi.pdf'),
+('prop01', 'Proposal Acara', 'Proposal Acara.docx');
 
 -- --------------------------------------------------------
 
@@ -125,18 +133,19 @@ INSERT INTO `kelas` (`id_kelas`, `nama`, `tahun_ajaran`) VALUES
 
 CREATE TABLE `layanan` (
   `id_form` int(11) NOT NULL,
-  `NISN` int(50) NOT NULL,
-  `tipe_form` varchar(20) NOT NULL,
   `tanggal` date NOT NULL,
-  `form` varchar(255) NOT NULL
+  `form` varchar(255) NOT NULL,
+  `NISN` int(50) NOT NULL,
+  `id_berkas` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `layanan`
 --
 
-INSERT INTO `layanan` (`id_form`, `NISN`, `tipe_form`, `tanggal`, `form`) VALUES
-(12, 1923141, 'Dispensasi', '2021-05-10', '');
+INSERT INTO `layanan` (`id_form`, `tanggal`, `form`, `NISN`, `id_berkas`) VALUES
+(7, '2222-02-12', 'dis01_1923141_2222-02-12.docx', 0, 'dis01'),
+(8, '2222-03-21', 'dis01_1923141_2222-03-21.PNG', 1923141, 'dis01');
 
 -- --------------------------------------------------------
 
@@ -262,7 +271,8 @@ ALTER TABLE `kelas`
 --
 ALTER TABLE `layanan`
   ADD PRIMARY KEY (`id_form`),
-  ADD KEY `NISN` (`NISN`);
+  ADD KEY `NISN` (`NISN`),
+  ADD KEY `id_berkas` (`id_berkas`);
 
 --
 -- Indexes for table `mapel`
@@ -301,7 +311,7 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -332,12 +342,6 @@ ALTER TABLE `guru`
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`NIP`) REFERENCES `guru` (`NIP`),
   ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`id_mapel`) REFERENCES `mapel` (`id_mapel`);
-
---
--- Constraints for table `layanan`
---
-ALTER TABLE `layanan`
-  ADD CONSTRAINT `layanan_ibfk_1` FOREIGN KEY (`NISN`) REFERENCES `siswa` (`NISN`);
 
 --
 -- Constraints for table `nilai`
