@@ -1,76 +1,46 @@
 <?= $this->extend('admin/header_footer'); ?>
 
 <?= $this->section('content'); ?>
-<!-- MAIN -->
+<!--    MAIN -->
 <div class="main">
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="lead">Template Berkas</p>
+					<p class="lead">Riwayat Pengajuan Siswa</p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<table id="example" class="table table-striped table-bordered" style="width:100%">
-						<thead>
-							<tr>
-								<th>Kode Berkas</th>
-								<th>Jenis Berkas</th>
-								<th>Berkas</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($layanan as $l) : ?>
-								<tr>
-									<td><?= $l['id_form']; ?></td>
-									<td><?= $l['tanggal']; ?></td>
-									<td><?= $l['Nama']; ?></td>
-									<td><?= $l['tipe_form']; ?></td>
-									<td>
-										<a class="btn btn-success" href=""><span class="fa fa-download" style="padding-right: 5px;"></span><?= $l['form']; ?></a>
-									</td>
-
-								</tr>
-							<?php endforeach; ?>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>Kode Berkas</th>
-								<th>Jenis Berkas</th>
-								<th>Berkas</th>
-								<th>Action</th>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<h2>Tambah Template</h2>
-					<form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
-						<label for="form">Tipe Form</label>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-book"></i></span>
-							<input class="form-control" placeholder="Tipe Form" type="text" id="form" name="form" required>
-						</div>
-						<br>
-						<label for="tanggal">Tanggal</label>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input class="form-control" placeholder="YYYY-MM-DD" type="text" id="tanggal" name="tanggal" required>
-						</div>
-						<br>
-						<label for="form">Unggah Form</label>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-file"></i></span>
-							<input class="form-control" placeholder="Form" type="file" name="form">
-						</div>
-						<br>
-						<input type="submit" value="SUBMIT" class="btn btn-success">
-					</form>
-				</div>
-			</div>
+			<table id="example" class="table table-bordered" style="width:100%">
+				<thead>
+					<tr>
+						<th>Tanggal</th>
+						<th>Nama Siswa</th>
+						<th>Tipe Pengajuan</th>
+						<th>Dokumen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($identitas as $i) : ?>
+						<tr>
+							<td><?= $i['tanggal']; ?></td>
+							<td><?= $i['Nama']; ?></td>
+							<td><?= $i['jenis_berkas']; ?></td>
+							<td>
+								<a class="btn btn-info" href="<?php base_url() ?>/admin/downloadBerkas/<?= $i['id_form']; ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Download Berkas</a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+				<tfoot>
+					<tr>
+                        <th>Tanggal</th>
+						<th>Nama Siswa</th>
+						<th>Tipe Pengajuan</th>
+						<th>Dokumen</th>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	</div>
 	<!-- END MAIN CONTENT -->
@@ -85,4 +55,16 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#example').DataTable({
+			pageLength: 10,
+    		filter: true,
+    		deferRender: true,
+		    scrollY: 200,
+		    scrollCollapse: true,
+		    scroller: true
+		});
+	});
+</script>
 <?= $this->endSection('content'); ?>

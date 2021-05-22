@@ -69,11 +69,11 @@
 						<li><a href="<?php base_url() ?>/admin/nilai" class=""><i class="glyphicon glyphicon-stats"></i> <span>Nilai Siswa</span></a></li>
 						<li><a href="<?php base_url() ?>/admin/presensi" class=""><i class="glyphicon glyphicon-list-alt"></i> <span>Presensi Siswa</span></a></li>
 						<li>
-							<a href="#layanan" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-file"></i> <span>Layanan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="layanan" class="collapse ">
+							<a href="#Layanan" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-file"></i> <span>Layanan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="Layanan" class="collapse ">
 								<ul class="nav">
 									<li><a href="<?php base_url() ?>/admin/riwayatLayanan" class="">Riwayat Layanan</a></li>
-									<li><a href="<?php base_url() ?>/admin/layanan" class="">Tambah Template Berkas</a></li>
+									<li><a href="<?php base_url() ?>/admin/berkas" class="">Tambah Template Berkas</a></li>
 								</ul>
 							</div>
 						</li>

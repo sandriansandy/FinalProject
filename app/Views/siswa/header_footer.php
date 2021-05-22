@@ -40,7 +40,7 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="">
-							<a class="update-pro" href="#" title="Upgrade to Pro" disabled><img src="../assets/img/user.png" class="img-circle" alt="Avatar"><span>Halo, Admin</span></a>
+							<a class="update-pro" href="#" title="Upgrade to Pro" disabled><img src="../assets/img/user.png" class="img-circle" alt="Avatar"><span>Halo, Siswa</span></a>
 						</li>
 					</ul>
 				</div>
@@ -60,8 +60,8 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="glyphicon glyphicon-file"></i> <span>Layanan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="<?php base_url() ?>/siswa/riwayatLayanan" class="">Riwayat Layanan</a></li>
-									<li><a href="<?php base_url() ?>/siswa/layanan" class="">Tambah Layanan Baru</a></li>
+									<li><a href="<?php base_url() ?>/siswa/riwayatLayanan" class="">Riwayat Pengajuan</a></li>
+									<li><a href="<?php base_url() ?>/siswa/pengajuan" class="">Tambah Pengajuan Baru</a></li>
 								</ul>
 							</div>
 						</li>

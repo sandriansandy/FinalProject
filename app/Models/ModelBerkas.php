@@ -4,14 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelLayanan extends Model
+class ModelBerkas extends Model
 {
-    protected $table = 'layanan';
-    protected $primaryKey = 'id_form';
-    protected $allowedFields = ['id_form', 'NISN', 'tipe_form', 'tanggal', 'form'];
+    protected $table = 'berkas';
+    protected $primaryKey = 'id_berkas';
+    protected $allowedFields = ['id_berkas', 'jenis_berkas', 'nama_file'];
 
-    public function getLayanan()
+    public function getBerkas($id = false)
     {
-        return $this->join('siswa', 'siswa.NISN = layanan.NISN')->findAll();
-    }
+        if($id == false){
+            return $this->findAll();
+        }
+        return $this->where(['id_berkas' => $id])->first();
+    }    
 }
