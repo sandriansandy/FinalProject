@@ -21,20 +21,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($identitas as $i) : ?>
+					<?php foreach ($layanan as $l) : ?>
 						<tr>
-							<td><?= $i['tanggal']; ?></td>
-							<td><?= $i['Nama']; ?></td>
-							<td><?= $i['jenis_berkas']; ?></td>
+							<td><?= $l['tanggal']; ?></td>
+							<td><?= $l['Nama']; ?></td>
+							<td><?= $l['jenis_berkas']; ?></td>
 							<td>
-								<a class="btn btn-info" href="<?php base_url() ?>/admin/downloadBerkas/<?= $i['id_form']; ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Download Berkas</a>
+								<a class="btn btn-success" href="<?php base_url() ?>/admin/download/<?= $l['id_form']; ?>"><span class="fa fa-download" style="padding-right: 5px;"></span>Download Berkas</a>
 							</td>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>
-                        <th>Tanggal</th>
+						<th>Tanggal</th>
 						<th>Nama Siswa</th>
 						<th>Tipe Pengajuan</th>
 						<th>Dokumen</th>
@@ -59,11 +59,11 @@
 	$(document).ready(function() {
 		$('#example').DataTable({
 			pageLength: 10,
-    		filter: true,
-    		deferRender: true,
-		    scrollY: 200,
-		    scrollCollapse: true,
-		    scroller: true
+			filter: true,
+			deferRender: true,
+			scrollY: 200,
+			scrollCollapse: true,
+			scroller: true
 		});
 	});
 </script>

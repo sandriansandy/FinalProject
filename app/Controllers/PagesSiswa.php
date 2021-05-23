@@ -35,32 +35,40 @@ class PagesSiswa extends BaseController
 		$data['berkas'] = $this->berkas->getBerkas();
 		return view('siswa/tambahPengajuan', $data);
 	}
+	public function riwayatSiswa()
+	{
+		$this->layanan = new ModelLayanan();
+		$data['judul'] = 'Riwayat Pengajuan | SINOFAK';
+		$data['content'] = 'riwayatSiswa';
+		$data['layanan'] = $this->layanan->getLayanan();
+		return view('siswa/riwayatSiswa', $data);
+	}
 	public function downloadBerkas($id)
-    {
-        $this->berkas = new ModelBerkas();
-        $data= $this->berkas->getBerkas($id);
-        return $this->response->download('assets/file/template/'.$data['nama_file'],NULL);
-    }
+	{
+		$this->berkas = new ModelBerkas();
+		$data = $this->berkas->getBerkas($id);
+		return $this->response->download('assets/file/template/' . $data['nama_file'], NULL);
+	}
 	public function simpanPengajuan()
 	{
 		$this->berkas = new ModelLayanan();
-        $berkas = $this->request->getFile('form');
-        if ($berkas->getError() == 4) {
-            session()->setFlashdata('error', 'Silahkan Upload Berkas');
-            return redirect()->to('/siswa/pengajuan');            
-        } else {
-            $ext = $berkas->getClientExtension();
-            $namaFile = $this->request->getVar('berkas').'_'.$this->request->getVar('nisn') . '_'.$this->request->getVar('tanggal').'.' . $ext;
-            $berkas->move('assets/file/riwayat', $namaFile);
-        };
-        $this->berkas->insert([
-            'NISN' => $this->request->getVar('nisn'),
-            'tanggal' => $this->request->getVar('tanggal'),
-            'form' => $namaFile,
+		$berkas = $this->request->getFile('form');
+		if ($berkas->getError() == 4) {
+			session()->setFlashdata('error', 'Silahkan Upload Berkas');
+			return redirect()->to('/siswa/pengajuan');
+		} else {
+			$ext = $berkas->getClientExtension();
+			$namaFile = $this->request->getVar('berkas') . '_' . $this->request->getVar('nisn') . '_' . $this->request->getVar('tanggal') . '.' . $ext;
+			$berkas->move('assets/file/riwayat', $namaFile);
+		};
+		$this->berkas->insert([
+			'NISN' => $this->request->getVar('nisn'),
+			'tanggal' => $this->request->getVar('tanggal'),
+			'form' => $namaFile,
 			'id_berkas' => $this->request->getVar('berkas')
-        ]);
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
-        return redirect()->to('/siswa/pengajuan');
+		]);
+		session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+		return redirect()->to('/siswa/pengajuan');
 	}
 	public function nilaiSiswa()
 	{

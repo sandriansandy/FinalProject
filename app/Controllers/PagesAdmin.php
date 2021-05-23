@@ -72,11 +72,43 @@ class PagesAdmin extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/pds');
     }
-    public function editSiswaAdmin()
+    public function editSiswaAdmin($NISN)
     {
+        $this->siswa = new ModelSiswa();
+        $this->kelas = new ModelKelas();
         $data['judul'] = 'Edit Siswa | SINOFAK';
         $data['content'] = 'editSiswa';
+        $data['kelas'] = $this->kelas->getKelasAdmin();
+        $data['identitas'] = $this->siswa->getSiswaAdmin($NISN);
         return view('admin/editSiswa', $data);
+    }
+    public function updateSiswaAdmin($NISN)
+    {
+        $this->siswa = new ModelSiswa();
+
+        $foto = $this->request->getFile('foto');
+        if ($foto->getError() == 4) {
+            $namaFoto = 'user.png';
+        } else {
+            $ext = $foto->getClientExtension();
+            $namaFoto = $this->request->getVar('NISN') . '.' . $ext;
+            $foto->move('assets/img/profil_siswa', $namaFoto);
+        };
+        $this->siswa->insert([
+            'NISN' => $NISN,
+            'Nama' => $this->request->getVar('Nama'),
+            'TTL' => $this->request->getVar('TTL'),
+            'Angkatan' => $this->request->getVar('Angkatan'),
+            'Alamat' => $this->request->getVar('Alamat'),
+            'tgl_masuk' => $this->request->getVar('Tgl_Masuk'),
+            'foto' => $namaFoto,
+            'id_kelas' => $this->request->getVar('kelas'),
+            'jenis_kelamin' => $this->request->getVar('gender')
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+        return redirect()->to('/admin/pds');
+        // dd($this->request->getVar());
     }
     public function hapusSiswaAdmin($NISN)
     {
@@ -208,7 +240,7 @@ class PagesAdmin extends BaseController
             'jam_selesai' => $this->request->getVar('jam_selesai')
         ]);
         // dd($this->request->getVar());
-        
+
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/jadwal');
     }
@@ -243,7 +275,7 @@ class PagesAdmin extends BaseController
             'id_kelas' => $this->request->getVar('kode'),
             'nama' => $this->request->getVar('kelas'),
             'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
-            ]);            
+        ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/kelas');
     }
@@ -301,7 +333,7 @@ class PagesAdmin extends BaseController
         $data['content'] = 'detailPresensi';
         return view('admin/detailPresensi', $data);
     }
-    
+
     //Menu Nilai
     public function nilaiAdmin()
     {
@@ -315,7 +347,7 @@ class PagesAdmin extends BaseController
         $data['content'] = 'nilaiKelas';
         return view('admin/nilaiKelas', $data);
     }
- 
+
     //Menu Layanan
     public function RiwayatLayanan()
     {
@@ -331,7 +363,7 @@ class PagesAdmin extends BaseController
         $data['judul'] = 'Berkas | SINOFAK';
         $data['content'] = 'berkas';
         $data['berkas'] = $this->berkas->getBerkas();
-        return view('admin/berkas',$data);
+        return view('admin/berkas', $data);
     }
     public function SimpanBerkas()
     {
@@ -339,7 +371,7 @@ class PagesAdmin extends BaseController
         $berkas = $this->request->getFile('template');
         if ($berkas->getError() == 4) {
             session()->setFlashdata('error', 'Silahkan Upload Template');
-            return redirect()->to('/admin/berkas');            
+            return redirect()->to('/admin/berkas');
         } else {
             $ext = $berkas->getClientExtension();
             $namaFile = $this->request->getVar('form') . '.' . $ext;
@@ -355,9 +387,9 @@ class PagesAdmin extends BaseController
     }
     public function downloadBerkas($id)
     {
-        $this->berkas = new ModelBerkas();
-        $data= $this->berkas->getBerkas($id);
-        return $this->response->download('assets/file/template/'.$data['file'],NULL);
+        $this->layanan = new ModelLayanan();
+        $data = $this->layanan->getLayanan();
+        return $this->response->download('assets/file/riwayat/' . $data['0']['form'], NULL);
     }
     public function HapusBerkas($id)
     {

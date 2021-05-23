@@ -36,7 +36,7 @@
 							<td><?= $i['nama']; ?></td>
 							<td>
 								<a class="btn btn-info" href="<?php base_url() ?> /admin/detailSiswa/<?= $i['NISN']; ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
-								<a class="btn btn-warning" href="editSiswa.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+								<a class="btn btn-warning" href="<?php base_url() ?> /admin/editSiswa/<?= $i['NISN']; ?>"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
 								<a class="btn btn-danger" href="<?php base_url() ?> /admin/hapusSiswa/<?= $i['NISN']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
 							</td>
 						</tr>
@@ -70,11 +70,11 @@
 	$(document).ready(function() {
 		$('#example').DataTable({
 			pageLength: 10,
-    		filter: true,
-    		deferRender: true,
-		    scrollY: 200,
-		    scrollCollapse: true,
-		    scroller: true
+			filter: true,
+			deferRender: true,
+			scrollY: 200,
+			scrollCollapse: true,
+			scroller: true
 		});
 	});
 </script>
