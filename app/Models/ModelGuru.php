@@ -8,7 +8,7 @@ class ModelGuru extends Model
 {
     protected $table = 'guru';
     protected $primaryKey = 'NIP';
-    protected $allowedFields = ['NIP', 'Nama', 'jenis_kelamin', 'TTL', 'Alamat', 'tgl_masuk', 'id_mapel', 'no_hp', 'foto', 'password'];
+    protected $allowedFields = ['NIP', 'nama_guru', 'jenis_kelamin', 'TTL', 'Alamat', 'tgl_masuk', 'id_mapel', 'no_hp', 'foto', 'password'];
 
     public function getGuruAdmin($NIP = false)
     {

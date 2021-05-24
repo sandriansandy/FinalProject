@@ -9,6 +9,7 @@ use App\Models\ModelMapel;
 use App\Models\ModelJadwal;
 use App\Models\ModelLayanan;
 use App\Models\ModelBerkas;
+use CodeIgniter\I18n\Time;
 
 class PagesAdmin extends BaseController
 {
@@ -34,6 +35,8 @@ class PagesAdmin extends BaseController
         $data['judul'] = 'Detail Siswa | SINOFAK';
         $data['content'] = 'detailSiswa';
         $data['identitas'] = $this->siswa->getSiswaAdmin($NISN);
+        $time = Time::parse($this->siswa->getSiswaAdmin($NISN)['tgl_masuk'], 'Asia/Jakarta');
+        $data['waktu'] = $time->toLocalizedString('d MMMM yyyy');
         return view('admin/detailSiswa', $data);
     }
     public function tambahSiswaAdmin()
@@ -62,7 +65,7 @@ class PagesAdmin extends BaseController
             'TTL' => $this->request->getVar('TTL'),
             'Angkatan' => $this->request->getVar('Angkatan'),
             'Alamat' => $this->request->getVar('Alamat'),
-            'tgl_masuk' => $this->request->getVar('Tgl_Masuk'),
+            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
             'foto' => $namaFoto,
             'id_kelas' => $this->request->getVar('kelas'),
             'jenis_kelamin' => $this->request->getVar('gender'),
@@ -85,26 +88,23 @@ class PagesAdmin extends BaseController
     public function updateSiswaAdmin($NISN)
     {
         $this->siswa = new ModelSiswa();
-
+        $ambil = $this->siswa->getSiswaAdmin($NISN);
         $foto = $this->request->getFile('foto');
-        if ($foto->getError() == 4) {
-            $namaFoto = 'user.png';
-        } else {
-            $ext = $foto->getClientExtension();
-            $namaFoto = $this->request->getVar('NISN') . '.' . $ext;
+        if (!$foto->getError() == 4) {
+            unlink('assets/img/profil_siswa/' . $ambil['foto']);
+            $namaFoto = $ambil['foto'];
             $foto->move('assets/img/profil_siswa', $namaFoto);
         };
-        $this->siswa->insert([
-            'NISN' => $NISN,
+        $update = ([
             'Nama' => $this->request->getVar('Nama'),
             'TTL' => $this->request->getVar('TTL'),
             'Angkatan' => $this->request->getVar('Angkatan'),
             'Alamat' => $this->request->getVar('Alamat'),
-            'tgl_masuk' => $this->request->getVar('Tgl_Masuk'),
-            'foto' => $namaFoto,
+            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
             'id_kelas' => $this->request->getVar('kelas'),
-            'jenis_kelamin' => $this->request->getVar('gender')
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin')
         ]);
+        $this->siswa->update($NISN, $update);
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
         return redirect()->to('/admin/pds');
@@ -148,11 +148,39 @@ class PagesAdmin extends BaseController
         $data['mapel'] = $this->mapel->getMapelAdmin();
         return view('admin/tambahGuru', $data);
     }
-    public function editGuruAdmin()
+    public function editGuruAdmin($NIP)
     {
+        $this->guru = new ModelGuru();
+        $this->mapel = new ModelMapel();
         $data['judul'] = 'Edit Guru | SINOFAK';
         $data['content'] = 'editGuru';
+        $data['identitas'] = $this->guru->getGuruAdmin($NIP);
+        $data['mapel'] = $this->mapel->getMapelAdmin();
         return view('admin/editGuru', $data);
+    }
+    public function updateGuruAdmin($NIP)
+    {
+        $this->guru = new ModelGuru();
+        $ambil = $this->guru->getGuruAdmin($NIP);
+        $foto = $this->request->getFile('foto');
+        if (!$foto->getError() == 4) {
+            unlink('assets/img/profil_guru/' . $ambil['foto']);
+            $namaFoto = $ambil['foto'];
+            $foto->move('assets/img/profil_guru', $namaFoto);
+        };
+        $update = ([
+            'Nama' => $this->request->getVar('Nama'),
+            'TTL' => $this->request->getVar('TTL'),
+            'Alamat' => $this->request->getVar('Alamat'),
+            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
+            'id_mapel' => $this->request->getVar('mapel'),
+            'jenis_kelamin' => $this->request->getVar('jenis_kelamin')
+        ]);
+        $this->guru->update($NIP, $update);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+        return redirect()->to('/admin/pdg');
+        // dd($this->request->getVar());
     }
     public function simpanGuru()
     {
@@ -190,7 +218,7 @@ class PagesAdmin extends BaseController
         if ($ambil['foto'] != 'user.png') {
             unlink('assets/img/profil_guru/' . $ambil['foto']);
         }
-        $this->siswa->delete($NIP);
+        $this->guru->delete($NIP);
 
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
         return redirect()->to('/admin/pdg');
@@ -207,11 +235,37 @@ class PagesAdmin extends BaseController
         //dd($data);
         return view('admin/jadwal', $data);
     }
-    public function editJadwalAdmin()
+    public function editJadwalAdmin($id_jadwal)
     {
+        $this->jadwal = new ModelJadwal();
+        $this->mapel = new ModelMapel();
+        $this->kelas = new ModelKelas();
+        $this->guru = new ModelGuru();
         $data['judul'] = 'Edit Jadwal | SINOFAK';
         $data['content'] = 'editJadwal';
+        $data['mapel'] = $this->mapel->getMapelAdmin();
+        $data['kelas'] = $this->kelas->getKelasAdmin();
+        $data['identitas'] = $this->guru->getGuruAdmin();
+        $data['jadwal'] = $this->jadwal->getEditJadwalAdmin($id_jadwal);
         return view('admin/editJadwal', $data);
+    }
+    public function updateJadwalAdmin($id_jadwal)
+    {
+        $this->jadwal = new ModelJadwal();
+
+        $update = ([
+            'id_mapel' => $this->request->getVar('mapel'),
+            'id_kelas' => $this->request->getVar('kelas'),
+            'NIP' => $this->request->getVar('nama_guru'),
+            'hari' => $this->request->getVar('hari'),
+            'jam_mulai' => $this->request->getVar('jam_mulai'),
+            'jam_selesai' => $this->request->getVar('jam_selesai')
+        ]);
+        $this->jadwal->update($id_jadwal, $update);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+        return redirect()->to('/admin/jadwal');
+        // dd($this->request->getVar());
     }
     public function tambahJadwalAdmin()
     {
@@ -239,15 +293,14 @@ class PagesAdmin extends BaseController
             'jam_mulai' => $this->request->getVar('jam_mulai'),
             'jam_selesai' => $this->request->getVar('jam_selesai')
         ]);
-        // dd($this->request->getVar());
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/jadwal');
     }
-    public function hapusJadwalAdmin($jadwal)
+    public function hapusJadwalAdmin($id_jadwal)
     {
         $this->jadwal = new ModelJadwal();
-        $this->jadwal->delete($jadwal);
+        $this->jadwal->delete($id_jadwal);
 
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
         return redirect()->to('/admin/jadwal');
@@ -273,11 +326,33 @@ class PagesAdmin extends BaseController
         $this->kelas = new ModelKelas();
         $this->kelas->insert([
             'id_kelas' => $this->request->getVar('kode'),
-            'nama' => $this->request->getVar('kelas'),
+            'nama_kelas' => $this->request->getVar('kelas'),
             'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/kelas');
+    }
+    public function editKelasAdmin($id_kelas)
+    {
+        $this->kelas = new ModelKelas();
+        $data['judul'] = 'Edit Jadwal | SINOFAK';
+        $data['content'] = 'editJadwal';
+        $data['kelas'] = $this->kelas->getKelasAdmin($id_kelas);
+        return view('admin/editkelas', $data);
+    }
+    public function updateKelasAdmin($id_kelas)
+    {
+        $this->jadwal = new ModelKelas();
+
+        $update = ([
+            'nama_kelas' => $this->request->getVar('kelas'),
+            'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
+        ]);
+        $this->jadwal->update($id_kelas, $update);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+        return redirect()->to('/admin/kelas');
+        // dd($this->request->getVar());
     }
     public function hapusKelasAdmin($kelas)
     {
@@ -311,6 +386,27 @@ class PagesAdmin extends BaseController
         ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/mapel');
+    }
+    public function editMapelAdmin($id_mapel)
+    {
+        $this->mapel = new ModelMapel();
+        $data['judul'] = 'Edit Jadwal | SINOFAK';
+        $data['content'] = 'editJadwal';
+        $data['mapel'] = $this->mapel->getMapelAdmin($id_mapel);
+        return view('admin/editMapel', $data);
+    }
+    public function updateMapelAdmin($id_mapel)
+    {
+        $this->mapel = new ModelMapel();
+
+        $update = ([
+            'Nama_mapel' => $this->request->getVar('mapel')
+        ]);
+        $this->mapel->update($id_mapel, $update);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+        return redirect()->to('/admin/mapel');
+        // dd($this->request->getVar());
     }
     public function hapusMapelAdmin($mapel)
     {

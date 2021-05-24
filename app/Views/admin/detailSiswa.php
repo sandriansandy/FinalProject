@@ -33,17 +33,17 @@
 						<tr>
 							<td>Jenis Kelamin </td>
 							<td>:</td>
-							<td>Laki-laki</td>
+							<td><?= $identitas['jenis_kelamin']; ?></td>
 						</tr>
 						<tr>
-							<td>Jurusan </td>
+							<td>Kelas </td>
 							<td>:</td>
-							<td>MIPA</td>
+							<td><?= $identitas['nama_kelas']; ?></td>
 						</tr>
 						<tr>
 							<td>Angkatan </td>
 							<td>:</td>
-							<td>2018</td>
+							<td><?= $identitas['Angkatan']; ?></td>
 						</tr>
 						<tr>
 							<td>Status </td>
@@ -53,68 +53,12 @@
 						<tr>
 							<td>Alamat </td>
 							<td>:</td>
-							<td>Jl. Suka-suka 45, Sukasari, Palembang</td>
+							<td><?= $identitas['Alamat']; ?></td>
 						</tr>
 						<tr>
 							<td>Diterima di Sekolah </td>
 							<td>:</td>
-							<td>6 Juni 2018</td>
-						</tr>
-					</table>
-					<table>
-						<thead>
-							<h3>Data Orangtua</h3>
-						</thead>
-						<tr>
-							<td>Nama Ayah </td>
-							<td>:</td>
-							<td>Bedjo Sugianto</td>
-						</tr>
-						<tr>
-							<td>Pekerjaan </td>
-							<td>:</td>
-							<td>PNS</td>
-						</tr>
-						<tr>
-							<td>Alamat </td>
-							<td>:</td>
-							<td>Jl. Suka-suka 45, Sukasari, Palembang</td>
-						</tr>
-						<tr>
-							<td>No Hp </td>
-							<td>:</td>
-							<td>0812313121</td>
-						</tr>
-						<tr>
-							<td>Pendidikan Terakhir </td>
-							<td>:</td>
-							<td>S2</td>
-						</tr>
-						<tr style="height: 10px;"></tr>
-						<tr>
-							<td>Nama Ibu </td>
-							<td>:</td>
-							<td>Titin Sumartin</td>
-						</tr>
-						<tr>
-							<td>Pekerjaan </td>
-							<td>:</td>
-							<td>Ibu Rumah Tangga</td>
-						</tr>
-						<tr>
-							<td>Alamat </td>
-							<td>:</td>
-							<td>Jl. Suka-suka 45, Sukasari, Palembang</td>
-						</tr>
-						<tr>
-							<td>No Hp </td>
-							<td>:</td>
-							<td>087212313532</td>
-						</tr>
-						<tr>
-							<td>Pendidikan Terakhir </td>
-							<td>:</td>
-							<td>S1</td>
+							<td><?= $waktu ?></td>
 						</tr>
 					</table>
 				</div>

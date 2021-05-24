@@ -28,7 +28,7 @@
 						<label for="Kelas">Kelas</label>
 						<select class="form-control" name="kelas">
 							<?php foreach ($kelas as $kel) : ?>
-								<option value="<?= $kel['id_kelas'] ?>"><?= $kel['nama'] ?></option>
+								<option value="<?= $kel['id_kelas'] ?>"><?= $kel['nama_kelas'] ?></option>
 							<?php endforeach; ?>
 						</select>
 						<br>

@@ -26,10 +26,10 @@
                             <?php foreach ($kelas as $k) : ?>
                                 <tr>
                                     <td><?= $k['id_kelas']; ?></td>
-                                    <td><?= $k['nama']; ?></td>
+                                    <td><?= $k['nama_kelas']; ?></td>
                                     <td><?= $k['tahun_ajaran']; ?></td>
                                     <td>
-                                        <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                                        <a class="btn btn-warning" href="<?php base_url() ?> /admin/editKelas/<?= $k['id_kelas']; ?>"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
                                         <a class="btn btn-danger" href="<?php base_url() ?> /admin/hapusKelas/<?= $k['id_kelas']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                                     </td>
                                 </tr>
@@ -55,7 +55,7 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                            <input class="form-control" placeholder="Nama Kelas" type="text" id="nama" name="kelas" required>
+                            <input class="form-control" placeholder="Nama Kelas" type="text" id="kelas" name="kelas" required>
                         </div>
                         <br>
                         <div class="input-group">

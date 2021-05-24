@@ -20,11 +20,11 @@ class ModelSiswa extends Model
         if ($NISN == false) {
             return $this->join('kelas', 'kelas.id_kelas = siswa.id_kelas')->findAll();
         }
-        return $this->where(['NISN' => $NISN])->first();
+        return $this->join('kelas', 'kelas.id_kelas = siswa.id_kelas')->where(['NISN' => $NISN])->first();
     }
 
-    public function login($NISN,$pass)
+    public function login($NISN, $pass)
     {
-        return $this->where(['NISN' => $NISN,'password' =>$pass])->countAllResults();        
+        return $this->where(['NISN' => $NISN, 'password' => $pass])->countAllResults();
     }
 }

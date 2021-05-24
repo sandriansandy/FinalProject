@@ -27,7 +27,7 @@
                                     <td><?= $m['id_mapel']; ?></td>
                                     <td><?= $m['Nama_mapel']; ?></td>
                                     <td>
-                                        <a class="btn btn-warning" href="editJadwal.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                                        <a class="btn btn-warning" href="<?php base_url() ?> /admin/editMapel/<?= $m['id_mapel']; ?>"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
                                         <a class="btn btn-danger" href="<?php base_url() ?> /admin/hapusMapel/<?= $m['id_mapel']; ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                                     </td>
                                 </tr>

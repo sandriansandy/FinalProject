@@ -8,8 +8,19 @@ class ModelJadwal extends Model
 {
     protected $table = 'jadwal';
     protected $primaryKey = 'id_jadwal';
-    protected $allowedFields = ['id_jadwal', 'id_mapel', 'id_kelas', 'NIP', 'hari', 'jam_mulai', 'jam_selesai', 'Nama_mapel', 'Nama', 'nama'];
+    protected $allowedFields = ['id_jadwal', 'id_mapel', 'id_kelas', 'NIP', 'hari', 'jam_mulai', 'jam_selesai', 'Nama_mapel', 'nama_guru', 'nama'];
 
+    public function getEditJadwalAdmin($id_jadwal = false)
+    {
+        if ($id_jadwal == false) {
+            return $this->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')
+                ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
+                ->join('guru', 'guru.NIP = jadwal.NIP')->findAll();
+        }
+        return $this->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')
+            ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
+            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['jadwal.id_jadwal' => $id_jadwal])->first();
+    }
     public function getJadwalAdmin()
     {
 
@@ -26,11 +37,12 @@ class ModelJadwal extends Model
             ->join('guru', 'guru.NIP = jadwal.NIP')->where(['guru.NIP' => $NIP])->findAll();
     }
 
-    public function getJadwalSiswa($NISN)
+    public function getJadwalSiswa($id_kelas)
     {
 
         return $this->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
-            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['NISN' => $NISN])->findAll();
+            ->join('siswa', 'siswa.id_kelas = jadwal.id_kelas')
+            ->join('guru', 'guru.NIP = jadwal.NIP')->where(['jadwal.id_kelas' => $id_kelas])->findAll();
     }
 }

@@ -21,14 +21,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($berkas as $b):?>
-							<tr>
-								<td><?=$b['jenis_berkas']?></td>
-								<td>
-									<a class="btn btn-success" href="<?php base_url()?>/siswa/download/<?= $b['id_berkas']?>"><span class="fa fa-download" style="padding-right: 5px;"></span></a>
-								</td>
-							</tr>
-							<?php endforeach;?>
+							<?php foreach ($berkas as $b) : ?>
+								<tr>
+									<td><?= $b['jenis_berkas'] ?></td>
+									<td>
+										<a class="btn btn-success" href="<?php base_url() ?>/siswa/download/<?= $b['id_berkas'] ?>"><span class="fa fa-download" style="padding-right: 5px;"></span></a>
+									</td>
+								</tr>
+							<?php endforeach; ?>
 						</tbody>
 						<tfoot>
 							<tr>
@@ -59,7 +59,7 @@
 							<span class="input-group-addon"><i class="fa fa-file"></i></span>
 							<input class="form-control" placeholder="Form" type="file" name="form">
 						</div>
-						<input type="hidden" name="nisn" value="<?= session('username')?>">
+						<input type="hidden" name="nisn" value="<?= session('username') ?>">
 						<br>
 						<input type="submit" value="SUBMIT" class="btn btn-success">
 					</form>
@@ -69,4 +69,26 @@
 	</div>
 	<!-- END MAIN CONTENT -->
 </div>
+<!-- Javascript -->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
+<script src="../assets/scripts/klorofil-common.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#example').DataTable({
+			pageLength: 10,
+			filter: true,
+			deferRender: true,
+			scrollY: 200,
+			scrollCollapse: true,
+			scroller: true
+		});
+	});
+</script>
 <?= $this->endSection('content'); ?>

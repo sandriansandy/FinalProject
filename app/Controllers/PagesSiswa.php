@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\ModelSiswa;
 use App\Models\ModelBerkas;
 use App\Models\ModelLayanan;
+use App\Models\ModelJadwal;
+use App\Models\ModelKelas;
 
 class PagesSiswa extends BaseController
 {
@@ -23,9 +25,14 @@ class PagesSiswa extends BaseController
 	}
 	public function jadwalSiswa()
 	{
-		$data['judul'] = 'Jadwal Pelajaran | SINOFAK';
+		$this->jadwal = new ModelJadwal();
+		$this->siswa = new ModelSiswa();
+		$kelas = $this->siswa->getSiswaAdmin(session('username'));
+		$data['jadwal'] = $this->jadwal->getJadwalSiswa($kelas['id_kelas']);
+		$data['judul'] = 'Jadwal | SINOFAK';
 		$data['content'] = 'jadwal';
 		return view('siswa/jadwal', $data);
+		// dd($data);
 	}
 	public function tambahPengajuan()
 	{

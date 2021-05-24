@@ -23,148 +23,15 @@
                 </thead>
                 <tbody>
                     <!-- jadwal senin -->
-                    <tr>
-                        <td>Senin</td>
-                        <td>Matematika Wajib</td>
-                        <td>08:40</td>
-                        <td>09:30</td>
-                        <td>Subur Budiman</td>
-
-                    </tr>
-                    <tr>
-                        <td>Senin</td>
-                        <td>Fisika</td>
-                        <td>10:00</td>
-                        <td>11:30</td>
-                        <td>Andi Ekunam</td>
-                    </tr>
-                    <tr>
-                        <td>Senin</td>
-                        <td>Kimia</td>
-                        <td>13:00</td>
-                        <td>14:30</td>
-                        <td>Eko Edi Susilo</td>
-                    </tr>
-                    <tr>
-                        <td>Senin</td>
-                        <td>Biologi</td>
-                        <td>14:30</td>
-                        <td>16:00</td>
-                        <td>Yanto Kocul</td>
-                    </tr>
-                    <!-- jadwal selasa -->
-                    <tr>
-                        <td>Selasa</td>
-                        <td>Sejarah</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>Santoso Brewok</td>
-
-                    </tr>
-                    <tr>
-                        <td>Selasa</td>
-                        <td>PPKN</td>
-                        <td>08:40</td>
-                        <td>09:30</td>
-                        <td>Yono Ceking</td>
-                    </tr>
-                    <tr>
-                        <td>Selasa</td>
-                        <td>Kewirausahaan</td>
-                        <td>10:00</td>
-                        <td>11:30</td>
-                        <td>Patricia Yatmi</td>
-                    </tr>
-                    <tr>
-                        <td>Selasa</td>
-                        <td>Seni Budaya</td>
-                        <td>13:00</td>
-                        <td>14:30</td>
-                        <td>Siti Paulus</td>
-                    </tr>
-                    <!-- jadwal rabu -->
-                    <tr>
-                        <td>Rabu</td>
-                        <td>Bahasa Indonesia</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>Yatik Tumingse</td>
-
-                    </tr>
-                    <tr>
-                        <td>Rabu</td>
-                        <td>Bahasa Inggris</td>
-                        <td>08:40</td>
-                        <td>09:30</td>
-                        <td>Wawan Waluyo</td>
-                    </tr>
-                    <tr>
-                        <td>Rabu</td>
-                        <td>Sastra Indonesia</td>
-                        <td>10:00</td>
-                        <td>11:30</td>
-                        <td>Eren Proklamasi</td>
-                    </tr>
-                    <tr>
-                        <td>Rabu</td>
-                        <td>Fisika</td>
-                        <td>13:00</td>
-                        <td>14:30</td>
-                        <td>Andi Ekunam</td>
-                    </tr>
-                    <!-- jadwal kamis -->
-                    <tr>
-                        <td>Kamis</td>
-                        <td>Penjasorkes</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>Ika Yulianti</td>
-
-                    </tr>
-                    <tr>
-                        <td>Kamis</td>
-                        <td>TIK</td>
-                        <td>08:40</td>
-                        <td>09:30</td>
-                        <td>Agus indihome</td>
-                    </tr>
-                    <tr>
-                        <td>Kamis</td>
-                        <td>Bahasa Inggris</td>
-                        <td>10:00</td>
-                        <td>11:30</td>
-                        <td>Wawan Waluyo</td>
-                    </tr>
-                    <tr>
-                        <td>Kamis</td>
-                        <td>Seni Budaya</td>
-                        <td>13:00</td>
-                        <td>14:30</td>
-                        <td>Siti Paulus</td>
-                    </tr>
-                    <!-- jadwal jumat -->
-                    <tr>
-                        <td>Jumat</td>
-                        <td>Kimia</td>
-                        <td>07:00</td>
-                        <td>08:40</td>
-                        <td>Eko Edi Susilo</td>
-
-                    </tr>
-                    <tr>
-                        <td>Jumat</td>
-                        <td>Biologi</td>
-                        <td>08:40</td>
-                        <td>09:30</td>
-                        <td>Yanto Kocul</td>
-                    </tr>
-                    <tr>
-                        <td>Jumat</td>
-                        <td>Matematika Peminatan</td>
-                        <td>10:00</td>
-                        <td>11:00</td>
-                        <td>Sutrisno Seloyo</td>
-                    </tr>
+                    <?php foreach ($jadwal as $js) : ?>
+                        <tr>
+                            <td><?= $js['hari']; ?></td>
+                            <td><?= $js['Nama_mapel']; ?></td>
+                            <td><?= $js['jam_mulai']; ?></td>
+                            <td><?= $js['jam_selesai']; ?></td>
+                            <td><?= $js['nama_guru']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                     <tr>
@@ -180,4 +47,26 @@
     </div>
     <!-- END MAIN CONTENT -->
 </div>
+<!-- Javascript -->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
+<script src="../assets/scripts/klorofil-common.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            pageLength: 10,
+            filter: true,
+            deferRender: true,
+            scrollY: 200,
+            scrollCollapse: true,
+            scroller: true
+        });
+    });
+</script>
 <?= $this->endSection(); ?>

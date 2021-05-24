@@ -8,57 +8,59 @@
 		<div class="container-fluid">
 			<div class="panel">
 				<div class="panel-heading">
-					<h1 class="panel-title">Form Edit Data</h1>
+					<h1 class="panel-title">Form Ubah Data</h1>
 				</div>
-				<div class="panel-body">
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="NIP" type="text" value="432523">
+				<form action="<?php base_url() ?>/admin/updateGuru/<?= $identitas['NIP']; ?>" method="POST" enctype="multipart/form-data">
+					<div class="panel-body">
+						<label for="Nama">Nama</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Nama" type="text" id="Nama" name="Nama" value="<?= $identitas['Nama']; ?>" required>
+						</div>
+						<br>
+						<label for="TTL">Tanggal Lahir</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Tempat Tanggal Lahir" type="date" id="TTL" name="TTL" value="<?= $identitas['TTL']; ?>" required>
+						</div>
+						<br>
+						<label for="Alamat">Alamat</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Alamat" type="text" id="Alamat" name="Alamat" value="<?= $identitas['Alamat']; ?>" required>
+						</div>
+						<br>
+						<label for="tgl_masuk">Tanggal Masuk</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input class="form-control" placeholder="Tanggal Masuk" type="date" id="tgl_masuk" name="tgl_masuk" value="<?= $identitas['tgl_masuk']; ?>" required>
+						</div>
+						<br>
+						<label for="Mapel">Mata Pelajaran</label>
+						<select class="form-control" name="mapel">
+							<?php foreach ($mapel as $m) : ?>
+								<option value="<?= $m['id_mapel'] ?>"><?= $m['Nama_mapel'] ?></option>
+							<?php endforeach; ?>
+						</select>
+						<br>
+						<label for="foto">Unggah Foto</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-file"></i></span>
+							<input class="form-control" placeholder="foto" type="file" name="foto">
+						</div>
+						<br>
+						<label for="jenis_kelamin">Jenis Kelamin</label>
+						<select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+							<option value="L">Laki-Laki</option>
+							<option value="P">Perempuan</option>
+						</select>
+						<br>
+						<input type="submit" value="SUBMIT" class="btn btn-success">
 					</div>
-					<br>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="Nama" type="text" value="Adi Santoso">
-					</div>
-					<br>
-					<div class="input-group">
-						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input class="form-control" placeholder="Tempat Tanggal Lahir" type="date">
-					</div>
-					<br>
-					<select class="form-control" placeholder="Pendidikan Terakhir">
-						<option value="cheese">D3</option>
-						<option value="tomatoes">D4/S1</option>
-						<option value="mozarella">S2</option>
-					</select>
-					<br>
-					<select class="form-control">
-						<option value="cheese">Biologi</option>
-						<option value="tomatoes">Fisika</option>
-						<option value="mozarella">Kimia</option>
-						<option value="">Agama Islam</option>
-						<option value="">Agama Kristen</option>
-					</select>
-					<br>
-					<label class="fancy-radio">
-						<input name="gender" value="male" type="radio">
-						<span><i></i>Laki-laki</span>
-						<input name="gender" value="female" type="radio">
-						<span><i></i>Perempuan</span>
-					</label>
-					<br>
-					<a href="pdg.html" class="btn btn-success">Submit</a>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
 	<!-- END MAIN CONTENT -->
 </div>
-<!-- Javascript -->
-<script src="../assets/vendor/jquery/jquery.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="../assets/scripts/klorofil-common.js"></script>
 <?= $this->endSection('content'); ?>

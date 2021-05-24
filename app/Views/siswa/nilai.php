@@ -89,4 +89,26 @@
 	</div>
 	<!-- END MAIN CONTENT -->
 </div>
+<!-- Javascript -->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="../assets/vendor/chartist/js/chartist.min.js"></script>
+<script src="../assets/scripts/klorofil-common.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#example').DataTable({
+			pageLength: 10,
+			filter: true,
+			deferRender: true,
+			scrollY: 200,
+			scrollCollapse: true,
+			scroller: true
+		});
+	});
+</script>
 <?= $this->endSection('content'); ?>

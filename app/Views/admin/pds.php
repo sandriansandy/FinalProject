@@ -33,7 +33,7 @@
 							<td><?= $i['NISN']; ?></td>
 							<td><?= $i['Nama']; ?></td>
 							<td><?= $i['Angkatan']; ?></td>
-							<td><?= $i['nama']; ?></td>
+							<td><?= $i['nama_kelas']; ?></td>
 							<td>
 								<a class="btn btn-info" href="<?php base_url() ?> /admin/detailSiswa/<?= $i['NISN']; ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
 								<a class="btn btn-warning" href="<?php base_url() ?> /admin/editSiswa/<?= $i['NISN']; ?>"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>

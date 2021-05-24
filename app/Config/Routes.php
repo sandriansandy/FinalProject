@@ -71,31 +71,37 @@ $routes->get('/admin/pds', 'PagesAdmin::pds');
 $routes->get('/admin/detailSiswa/(:any)', 'PagesAdmin::detailSiswaAdmin/$1');
 $routes->get('/admin/tambahSiswa', 'PagesAdmin::tambahSiswaAdmin');
 $routes->get('/admin/editSiswa/(:any)', 'PagesAdmin::editSiswaAdmin/$1');
-$routes->get('/admin/updateSiswa/(:any)', 'PagesAdmin::updateSiswaAdmin/$1');
+$routes->post('/admin/updateSiswa/(:any)', 'PagesAdmin::updateSiswaAdmin/$1');
 $routes->post('/admin/simpanSiswa', 'PagesAdmin::simpanSiswa');
 $routes->get('/admin/hapusSiswa/(:any)', 'PagesAdmin::hapusSiswaAdmin/$1');
 
 $routes->get('/admin/pdg', 'PagesAdmin::pdg');
 $routes->get('/admin/detailGuru/(:any)', 'PagesAdmin::detailGuruAdmin/$1');
 $routes->get('/admin/tambahGuru', 'PagesAdmin::tambahGuruAdmin');
-$routes->get('/admin/editGuru', 'PagesAdmin::editGuruAdmin');
+$routes->get('/admin/editGuru/(:any)', 'PagesAdmin::editGuruAdmin/$1');
+$routes->post('/admin/updateGuru/(:any)', 'PagesAdmin::updateGuruAdmin/$1');
 $routes->post('/admin/simpanGuru', 'PagesAdmin::simpanGuru');
 $routes->get('/admin/hapusGuru/(:any)', 'PagesAdmin::hapusGuruAdmin/$1');
 
 $routes->get('/admin/jadwal', 'PagesAdmin::jadwalAdmin');
 $routes->get('/admin/tambahJadwalAdmin', 'PagesAdmin::tambahJadwalAdmin');
-$routes->get('/admin/editJadwal', 'PagesAdmin::editJadwalAdmin');
+$routes->get('/admin/editJadwal/(:any)', 'PagesAdmin::editJadwalAdmin/$1');
+$routes->post('/admin/updateJadwal/(:any)', 'PagesAdmin::updateJadwalAdmin/$1');
 $routes->post('/admin/simpanJadwal', 'PagesAdmin::simpanJadwal');
 $routes->get('/admin/hapusJadwal/(:any)', 'PagesAdmin::hapusJadwalAdmin/$1');
 
 $routes->get('/admin/kelas/', 'PagesAdmin::kelas');
 $routes->get('/admin/tambahKelas', 'PagesAdmin::tambahKelasAdmin');
 $routes->post('/admin/simpanKelas', 'PagesAdmin::simpanKelas');
+$routes->get('/admin/editKelas/(:any)', 'PagesAdmin::editKelasAdmin/$1');
+$routes->post('/admin/updateKelas/(:any)', 'PagesAdmin::updateKelasAdmin/$1');
 $routes->get('/admin/hapusKelas/(:any)', 'PagesAdmin::hapusKelasAdmin/$1');
 
 $routes->get('/admin/mapel/', 'PagesAdmin::mapel');
 $routes->get('/admin/tambahMapel', 'PagesAdmin::tambahMapelAdmin');
 $routes->post('/admin/simpanMapel', 'PagesAdmin::simpanMapel');
+$routes->get('/admin/editMapel/(:any)', 'PagesAdmin::editMapelAdmin/$1');
+$routes->post('/admin/updateMapel/(:any)', 'PagesAdmin::updateMapelAdmin/$1');
 $routes->get('/admin/hapusMapel/(:any)', 'PagesAdmin::hapusMapelAdmin/$1');
 
 $routes->get('/admin/nilai/', 'PagesAdmin::nilaiAdmin');

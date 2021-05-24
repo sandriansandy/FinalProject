@@ -10,7 +10,7 @@
 				<div class="panel-heading">
 					<h1 class="panel-title">Form Ubah Data</h1>
 				</div>
-				<form href="<?php base_url() ?>/admin/updateSiswa/<?= $identitas['NISN']; ?>" method="POST" enctype="multipart/form-data">
+				<form action="<?php base_url() ?>/admin/updateSiswa/<?= $identitas['NISN']; ?>" method="POST" enctype="multipart/form-data">
 					<div class="panel-body">
 						<label for="Nama">Nama</label>
 						<div class="input-group">
@@ -45,7 +45,7 @@
 						<label for="Kelas">Kelas</label>
 						<select class="form-control" name="kelas">
 							<?php foreach ($kelas as $kel) : ?>
-								<option value="<?= $kel['id_kelas'] ?>"><?= $kel['nama'] ?></option>
+								<option value="<?= $kel['id_kelas'] ?>"><?= $kel['nama_kelas'] ?></option>
 							<?php endforeach; ?>
 						</select>
 						<br>

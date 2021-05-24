@@ -26,7 +26,7 @@
                     <?php foreach ($jadwal as $jg) : ?>
                         <tr>
                             <td><?= $jg['hari']; ?></td>
-                            <td><?= $jg['nama']; ?></td>
+                            <td><?= $jg['nama_kelas']; ?></td>
                             <td><?= $jg['jam_mulai']; ?></td>
                             <td><?= $jg['jam_selesai']; ?></td>
                         </tr>
