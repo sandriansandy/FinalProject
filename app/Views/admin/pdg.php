@@ -28,7 +28,7 @@
                     <?php foreach ($identitas as $g) : ?>
                         <tr>
                             <td><?= $g['NIP']; ?></td>
-                            <td><?= $g['Nama']; ?></td>
+                            <td><?= $g['nama_guru']; ?></td>
                             <td><?= $g['Nama_mapel']; ?></td>
                             <td><?= $g['tgl_masuk']; ?></td>
                             <td>

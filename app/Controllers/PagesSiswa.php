@@ -7,6 +7,8 @@ use App\Models\ModelBerkas;
 use App\Models\ModelLayanan;
 use App\Models\ModelJadwal;
 use App\Models\ModelKelas;
+use App\Models\ModelPresensi;
+use App\Models\ModelDetPresensi;
 
 class PagesSiswa extends BaseController
 {
@@ -17,11 +19,6 @@ class PagesSiswa extends BaseController
 		$data['content'] = 'index';
 		$data['identitas'] = $this->siswa->getSiswaAdmin(session('username'));
 		return view('siswa/Index', $data);
-
-
-		// $this->siswa = new ModelSiswa();
-		// $cek = $this->siswa->getSiswa();
-		// dd($cek);
 	}
 	public function jadwalSiswa()
 	{
@@ -85,8 +82,13 @@ class PagesSiswa extends BaseController
 	}
 	public function presensiSiswa()
 	{
+		$this->detPresensi = new ModelDetPresensi();
 		$data['judul'] = 'Presensi | SINOFAK';
 		$data['content'] = 'presensi';
+		$data['jadwal'] = $this->detPresensi->getJadwal(session('username'));
+		$data['present'] = $this->detPresensi;
+		// $data['excuse'] = $this->detPresensi->getExcuse(session('username'))->resultID->num_rows;
+		// $data['absent'] = $this->detPresensi->getAbstain(session('username'))->resultID->num_rows;
 		return view('siswa/presensi', $data);
 	}
 }

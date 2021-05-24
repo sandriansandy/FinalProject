@@ -9,6 +9,8 @@ use App\Models\ModelMapel;
 use App\Models\ModelJadwal;
 use App\Models\ModelLayanan;
 use App\Models\ModelBerkas;
+use App\Models\ModelPresensi;
+use App\Models\ModelDetPresensi;
 use CodeIgniter\I18n\Time;
 
 class PagesAdmin extends BaseController
@@ -169,7 +171,7 @@ class PagesAdmin extends BaseController
             $foto->move('assets/img/profil_guru', $namaFoto);
         };
         $update = ([
-            'Nama' => $this->request->getVar('Nama'),
+            'nama_guru' => $this->request->getVar('Nama'),
             'TTL' => $this->request->getVar('TTL'),
             'Alamat' => $this->request->getVar('Alamat'),
             'tgl_masuk' => $this->request->getVar('tgl_masuk'),
@@ -196,7 +198,7 @@ class PagesAdmin extends BaseController
 
         $this->guru->insert([
             'NIP' => $this->request->getVar('NIP'),
-            'Nama' => $this->request->getVar('Nama'),
+            'nama_guru' => $this->request->getVar('Nama'),
             'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
             'TTL' => $this->request->getVar('TTL'),
             'Alamat' => $this->request->getVar('Alamat'),
@@ -311,15 +313,9 @@ class PagesAdmin extends BaseController
         $this->kelas = new ModelKelas();
         $data['judul'] = 'Kelas | SINOFAK';
         $data['content'] = 'kelas';
+        $data['edit'] = null;
         $data['kelas'] = $this->kelas->getKelasAdmin();
         return view('admin/kelas', $data);
-    }
-    public function tambahKelasAdmin()
-    {
-        $this->kelas = new ModelKelas();
-        $data['content'] = 'tambahKelas';
-        $data['kelas'] = $this->kelas->getKelasAdmin();
-        return view('admin/tambahKelas', $data);
     }
     public function simpanKelas()
     {
@@ -335,10 +331,11 @@ class PagesAdmin extends BaseController
     public function editKelasAdmin($id_kelas)
     {
         $this->kelas = new ModelKelas();
-        $data['judul'] = 'Edit Jadwal | SINOFAK';
-        $data['content'] = 'editJadwal';
-        $data['kelas'] = $this->kelas->getKelasAdmin($id_kelas);
-        return view('admin/editkelas', $data);
+        $data['judul'] = 'Edit Kelas | SINOFAK';
+        $data['content'] = 'kelas';
+        $data['edit'] = $this->kelas->getKelasAdmin($id_kelas);
+        $data['kelas'] = $this->kelas->getKelasAdmin();
+        return view('admin/kelas', $data);
     }
     public function updateKelasAdmin($id_kelas)
     {
@@ -366,16 +363,10 @@ class PagesAdmin extends BaseController
     {
         $this->mapel = new ModelMapel();
         $data['judul'] = 'Mata Pelajaran | SINOFAK';
+        $data['edit'] = null;
         $data['content'] = 'mapel';
         $data['mapel'] = $this->mapel->getMapelAdmin();
         return view('admin/mapel', $data);
-    }
-    public function tambahMapelAdmin()
-    {
-        $this->mapel = new ModelMapel();
-        $data['content'] = 'tambahMapel';
-        $data['mapel'] = $this->mapel->getMapel();
-        return view('admin/tambahMapel', $data);
     }
     public function simpanMapel()
     {
@@ -391,9 +382,10 @@ class PagesAdmin extends BaseController
     {
         $this->mapel = new ModelMapel();
         $data['judul'] = 'Edit Jadwal | SINOFAK';
-        $data['content'] = 'editJadwal';
-        $data['mapel'] = $this->mapel->getMapelAdmin($id_mapel);
-        return view('admin/editMapel', $data);
+        $data['content'] = 'mapel';
+        $data['edit'] = $this->mapel->getMapelAdmin($id_mapel);
+        $data['mapel'] = $this->mapel->getMapelAdmin();
+        return view('admin/mapel', $data);
     }
     public function updateMapelAdmin($id_mapel)
     {
@@ -419,15 +411,66 @@ class PagesAdmin extends BaseController
     //Menu presensi
     public function presensiAdmin()
     {
+        $this->presensi = new ModelPresensi();
+        $this->jadwal = new ModelJadwal();
         $data['judul'] = 'Presensi | SINOFAK';
         $data['content'] = 'presensi';
+        $data['jadwal'] = $this->jadwal->getJadwalAdmin();
+        $data['absen'] = $this->presensi->getPresensiAdmin();
         return view('admin/presensi', $data);
     }
-    public function detailPresensiAdmin()
+    public function detailPresensiAdmin($id_presensi)
     {
+        $this->detPresensi = new ModelDetPresensi();
         $data['judul'] = 'Detail Presensi | SINOFAK';
         $data['content'] = 'detailPresensi';
+        $data['detPresensi'] = $this->detPresensi->getDetPresensi($id_presensi);
         return view('admin/detailPresensi', $data);
+    }
+    public function tambahPresensi()
+    {
+        $this->presensi = new ModelPresensi();
+        $this->detPresensi = new ModelDetPresensi();
+        $this->jadwal = new ModelJadwal();
+        $this->siswa = new ModelSiswa();
+        $kelas = $this->jadwal->getEditJadwalAdmin($this->request->getVar('jadwal'));
+        $siswa = $this->siswa->getSiswaKelas($kelas['id_kelas']);
+        foreach ($siswa as $s) {
+            $this->detPresensi->insert([
+                'id_presensi' => $this->request->getVar('kode'),
+                'NISN' => $s['NISN'],
+                'status' => null
+            ]);
+        }
+        $this->presensi->insert([
+            'id_presensi' => $this->request->getVar('kode'),
+            'id_jadwal' => $this->request->getVar('jadwal'),
+            'tanggal' => $this->request->getVar('tanggal')
+        ]);
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/admin/presensi');
+    }
+    public function setPresensi($id, $status)
+    {
+        $this->detPresensi = new ModelDetPresensi();
+        $data = $this->detPresensi->getPresensi($id);
+        $this->detPresensi->update($id, [
+            'status' => $status
+        ]);
+        $link = '/admin/detailPresensi/' . $data['id_presensi'];
+        return redirect()->to($link);
+    }
+    public function hapusPresensiAdmin($id_presensi)
+    {
+        $this->presensi = new ModelPresensi();
+        $this->detPresensi = new ModelDetPresensi();
+        $detail = $this->detPresensi->getDetPresensi($id_presensi);
+        foreach ($detail as $d) {
+            $this->detPresensi->delete($d['id_dp']);
+        }
+        $this->presensi->delete($id_presensi);
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+        return redirect()->to('/admin/presensi');
     }
 
     //Menu Nilai

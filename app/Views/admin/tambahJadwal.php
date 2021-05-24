@@ -21,7 +21,7 @@
 						<label for="Nama">Nama Guru</label>
 						<select class="form-control" name="Nama">
 							<?php foreach ($identitas as $i) : ?>
-								<option value="<?= $i['NIP'] ?>"><?= $i['Nama'] ?></option>
+								<option value="<?= $i['NIP'] ?>"><?= $i['nama_guru'] ?></option>
 							<?php endforeach; ?>
 						</select>
 						<br>

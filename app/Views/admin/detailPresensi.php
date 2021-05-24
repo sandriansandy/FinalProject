@@ -6,7 +6,6 @@
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
-			<a href="" style="float: right;" class="btn btn-success"></a>
 			<h2>Presensi</h2>
 			<table id="example" class="table table-striped table-bordered" style="width:100%">
 				<thead>
@@ -16,32 +15,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Sandrian Yulian Firmansyah Noorihsan</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-check-circle" style="padding-right: 5px;"></span>Present</a>
-							<a class="btn btn-warning" href=""><span class="fa fa-exclamation-circle" style="padding-right: 5px;"></span>Excuse</a>
-							<a class="btn btn-danger" href=""><span class="fa fa-times-circle" style="padding-right: 5px;"></span>Absent</a>
-						</td>
-
-					</tr>
-					<tr>
-						<td>Hanifa Putri Rahima</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-check-circle" style="padding-right: 5px;"></span>Present</a>
-							<a class="btn btn-warning" href=""><span class="fa fa-exclamation-circle" style="padding-right: 5px;"></span>Excuse</a>
-							<a class="btn btn-danger" href=""><span class="fa fa-times-circle" style="padding-right: 5px;"></span>Absent</a>
-						</td>
-					</tr>
-					<tr>
-						<td>Alizza Iman R.</td>
-						<td>
-							<a class="btn btn-success" href=""><span class="fa fa-check-circle" style="padding-right: 5px;"></span>Present</a>
-							<a class="btn btn-warning" href=""><span class="fa fa-exclamation-circle" style="padding-right: 5px;"></span>Excuse</a>
-							<a class="btn btn-danger" href=""><span class="fa fa-times-circle" style="padding-right: 5px;"></span>Absent</a>
-						</td>
-
-					</tr>
+					<?php foreach ($detPresensi as $dp) : ?>
+						<tr>
+							<td><?= $dp['Nama']; ?></td>
+							<?php if ($dp['status'] == null) { ?>
+								<td>
+									<a class="btn btn-success" href="<?php base_url() ?>/admin/present/<?= $dp['id_dp'] ?>/hadir"><span class="fa fa-check-circle" style="padding-right: 5px;"></span>Present</a>
+									<a class="btn btn-warning" href="<?php base_url() ?>/admin/present/<?= $dp['id_dp'] ?>/ijin"><span class="fa fa-exclamation-circle" style="padding-right: 5px;"></span>Excuse</a>
+									<a class="btn btn-danger" href="<?php base_url() ?>/admin/present/<?= $dp['id_dp'] ?>/absen"><span class="fa fa-times-circle" style="padding-right: 5px;"></span>Absent</a>
+								</td>
+							<?php } else if ($dp['status'] != null) { ?>
+								<td><?= $dp['status'] ?></td>
+							<?php } ?>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>

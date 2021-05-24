@@ -45,27 +45,48 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <h2>Tambah Kelas</h2>
-                    <form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input class="form-control" placeholder="Kode Kelas" type="text" id="id_kelas" name="kode" required>
-                        </div>
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                            <input class="form-control" placeholder="Nama Kelas" type="text" id="kelas" name="kelas" required>
-                        </div>
-                        <br>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                            <input class="form-control" placeholder="Tahun Ajaran" type="text" id="tahun_ajaran" name="tahun_ajaran" required>
-                        </div>
-                        <br>
-                        <input type="submit" value="SUBMIT" class="btn btn-success">
-                    </form>
-                </div>
+                <?php if ($edit == null) { ?>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <h2>Tambah Kelas</h2>
+                        <form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input class="form-control" placeholder="Kode Kelas" type="text" id="id_kelas" name="kode" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                <input class="form-control" placeholder="Nama Kelas" type="text" id="kelas" name="kelas" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input class="form-control" placeholder="Tahun Ajaran" type="text" id="tahun_ajaran" name="tahun_ajaran" required>
+                            </div>
+                            <br>
+                            <input type="submit" value="SUBMIT" class="btn btn-success">
+                        </form>
+                    </div>
+                <?php } else if ($edit != null) { ?>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <h2>Edit Kelas</h2>
+                        <form action="<?php base_url() ?>/admin/updateKelas/<?= $edit['id_kelas'] ?>" method="post" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                <input class="form-control" placeholder="Nama Kelas" type="text" id="kelas" name="kelas" value="<?= $edit['nama_kelas'] ?>" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <input class="form-control" placeholder="Tahun Ajaran" type="text" id="tahun_ajaran" name="tahun_ajaran" value="<?= $edit['tahun_ajaran'] ?>" required>
+                            </div>
+                            <input type="hidden" name="kode" id="input" class="form-control" value="<?= $edit['id_kelas'] ?>">
+                            <br>
+                            <input type="submit" value="SUBMIT" class="btn btn-success">
+                        </form>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

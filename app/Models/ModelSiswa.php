@@ -10,9 +10,9 @@ class ModelSiswa extends Model
     protected $primaryKey = 'NISN';
     protected $allowedFields = ['NISN', 'Nama', 'TTL', 'Angkatan', 'Alamat', 'tgl_masuk', 'jenis_kelamin', 'foto', 'id_kelas', 'password'];
 
-    public function getSiswa()
+    public function getSiswaKelas($id)
     {
-        return $this->where(['NISN' => '123'])->first();
+        return $this->where(['id_kelas' => $id])->findAll();
     }
 
     public function getSiswaAdmin($NISN = false)

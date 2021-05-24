@@ -18,7 +18,7 @@
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 					<table style="margin-bottom: 30px;">
 						<thead>
-		
+
 							<h3>Data Pribadi</h3>
 						</thead>
 						<tr>
@@ -29,7 +29,7 @@
 						<tr>
 							<td>Nama </td>
 							<td>:</td>
-							<td><?= $identitas['Nama']; ?></td>
+							<td><?= $identitas['nama_guru']; ?></td>
 						</tr>
 						<tr>
 							<td>Jenis Kelamin </td>
@@ -54,7 +54,6 @@
 					</table>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<!-- END MAIN CONTENT -->
@@ -66,4 +65,5 @@
 <script src="../assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 <script src="../assets/vendor/chartist/js/chartist.min.js"></script>
 <script src="../assets/scripts/klorofil-common.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <?= $this->endSection('content'); ?>

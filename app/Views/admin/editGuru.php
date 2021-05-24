@@ -15,7 +15,7 @@
 						<label for="Nama">Nama</label>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input class="form-control" placeholder="Nama" type="text" id="Nama" name="Nama" value="<?= $identitas['Nama']; ?>" required>
+							<input class="form-control" placeholder="Nama" type="text" id="Nama" name="Nama" value="<?= $identitas['nama_guru']; ?>" required>
 						</div>
 						<br>
 						<label for="TTL">Tanggal Lahir</label>

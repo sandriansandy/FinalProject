@@ -108,7 +108,10 @@ $routes->get('/admin/nilai/', 'PagesAdmin::nilaiAdmin');
 $routes->get('/admin/nilaiKelas', 'PagesAdmin::nilaiKelasAdmin');
 
 $routes->get('/admin/presensi', 'PagesAdmin::presensiAdmin');
-$routes->get('/admin/detailPresensi', 'PagesAdmin::detailPresensiAdmin');
+$routes->post('/admin/tambahPresensi', 'PagesAdmin::tambahPresensi');
+$routes->get('/admin/detailPresensi/(:any)', 'PagesAdmin::detailPresensiAdmin/$1');
+$routes->get('/admin/hapusPresensi/(:any)', 'PagesAdmin::hapusPresensiAdmin/$1');
+$routes->get('/admin/present/(:any)/(:any)', 'PagesAdmin::setPresensi/$1/$2');
 
 $routes->get('/admin/riwayatLayanan', 'PagesAdmin::RiwayatLayanan');
 $routes->get('/admin/berkas', 'PagesAdmin::Berkas');

@@ -32,7 +32,7 @@
                         <tr>
                             <td><?= $j['id_jadwal']; ?></td>
                             <td><?= $j['Nama_mapel']; ?></td>
-                            <td><?= $j['Nama']; ?></td>
+                            <td><?= $j['nama_guru']; ?></td>
                             <td><?= $j['nama_kelas']; ?></td>
                             <td><?= $j['hari']; ?></td>
                             <td><?= $j['jam_mulai']; ?></td>

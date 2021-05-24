@@ -10,40 +10,65 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <p class="lead">Data Presensi Siswa</p>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <a href="" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
-                </div>
             </div>
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Kode Mapel</th>
-                        <th>Tanggal</th>
-                        <th>Kelas</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CR55-PAI</td>
-                        <td>27-12-2021</td>
-                        <td>XI MIPA 2</td>
-                        <td>
-                            <a class="btn btn-info" href="detailPresensi.html"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
-                            <a class="btn btn-warning" href="detailPresensi.html"><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Kode Mapel</th>
-                        <th>Tanggal</th>
-                        <th>Kelas</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nama Mata Pelajaran</th>
+                            <th>Tanggal</th>
+                            <th>Kelas</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($absen as $p) : ?>
+                            <tr>
+                                <td><?= $p['Nama_mapel']; ?></td>
+                                <td><?= $p['tanggal']; ?></td>
+                                <td><?= $p['nama_kelas']; ?></td>
+                                <td>
+                                    <a class="btn btn-info" href="<?php base_url() ?>/admin/detailPresensi/<?= $p['id_presensi'] ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
+                                    <a class="btn btn-danger" href="<?php base_url() ?>/admin/hapusPresensi/<?= $p['id_presensi'] ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Kode Mapel</th>
+                            <th>Tanggal</th>
+                            <th>Kelas</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h2>Tambah Presensi</h2>
+                <form action="<?php base_url() ?>/admin/tambahPresensi" method="post" enctype="multipart/form-data">
+                    <label for="Mapel">Kode Presensi</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input class="form-control" placeholder="Kode Presensi" type="text" id="id_presensi" name="kode" required>
+                    </div>
+                    <br>
+                    <label for="Mapel">Jadwal</label>
+                    <select class="form-control" name="jadwal">
+                        <?php foreach ($jadwal as $j) : ?>
+                            <option value="<?= $j['id_jadwal'] ?>"><?= $j['Nama_mapel'] ?> <?= $j['nama_kelas'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <br>
+                    <label for="Mapel">Tanggal</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                        <input class="form-control" placeholder="Tanggal" type="date" id="tanggal" name="tanggal" required>
+                    </div>
+                    <br>
+                    <input type="submit" value="SUBMIT" class="btn btn-success">
+                </form>
+            </div>
         </div>
     </div>
     <!-- END MAIN CONTENT -->

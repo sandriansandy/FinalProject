@@ -22,32 +22,22 @@
 			<br>
 			<table id="example" class="table table-striped table-bordered" style="width:100%">
 				<thead>
-					<t r>
-						<t h>Mata Pelajaran</th>
-							<t h>Hadir</th>
-								<th>Izin</th>
-								<t h>Alpha</th>
-									</ tr>
+					<tr>
+						<th>Mata Pelajaran</th>
+						<th>Hadir</th>
+						<th>Izin</th>
+						<th>Alpha</th>
+					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Matematika</td>
-						<td>5</td>
-						<td>2</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>Fisika</td>
-						<td>5</td>
-						<td>3</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>Biologi</td>
-						<td>8</td>
-						<td>0</td>
-						<td>0</td>
-					</tr>
+					<?php foreach ($jadwal as $j) : ?>
+						<tr>
+							<td><?= $j['Nama_mapel']; ?></td>
+							<td><?= $present->getPresent(session('username'), $j['id_jadwal'])->resultID->num_rows ?></td>
+							<td><?= $present->getExcuse(session('username'), $j['id_jadwal'])->resultID->num_rows ?></td>
+							<td><?= $present->getAbstain(session('username'), $j['id_jadwal'])->resultID->num_rows ?></td>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 				<tfoot>
 					<tr>
@@ -74,14 +64,14 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
-				$('#example').DataTable({
-							pageLength: 10,
-							filter: true,
-							deferRender: true,
-							scrollY: 200,
-							scrollCollapse: true,
-							croller: true
-
-
-
-							ndSection('content'); ? >
+		$('#example').DataTable({
+			pageLength: 10,
+			filter: true,
+			deferRender: true,
+			scrollY: 200,
+			scrollCollapse: true,
+			scroller: true
+		});
+	});
+</script>
+<?= $this->endSection('content'); ?>
