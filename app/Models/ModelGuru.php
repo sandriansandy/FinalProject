@@ -22,4 +22,9 @@ class ModelGuru extends Model
     {
         return $this->where(['NIP' => $NIP, 'password' => $pass])->countAllResults();
     }
+
+    public function cek($id)
+    {
+        return $this->where(['NIP'])->find();
+    }
 }

@@ -27,4 +27,9 @@ class ModelSiswa extends Model
     {
         return $this->where(['NISN' => $NISN, 'password' => $pass])->countAllResults();
     }
+
+    public function cek($id)
+    {
+        return $this->where(['NISN'])->find();
+    }
 }

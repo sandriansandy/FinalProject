@@ -6,10 +6,12 @@
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
+			<?php if (session()->getFlashdata('pesan')) { ?>
+				<div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan') ?></div>
+			<?php } elseif (session()->getFlashdata('error')) { ?>
+				<div class="alert alert-danger" role="alert"><?= session()->getFlashdata('error') ?></div>
+			<?php } ?>
 			<div class="row">
-				<?php if (session()->getFlashdata('pesan')) : ?>
-					<div class="alert alert-success" role="alert"><?= session()->getFlashdata('pesan') ?></div>
-				<?php endif; ?>
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<p class="lead">Pangkalan Data Siswa</p>
 				</div>

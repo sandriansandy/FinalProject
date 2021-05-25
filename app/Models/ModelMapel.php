@@ -17,4 +17,8 @@ class ModelMapel extends Model
         } else
             return $this->find($id_mapel);
     }
+    public function cek($id)
+    {
+        return $this->where(['id_mapel'])->find();
+    }
 }

@@ -28,32 +28,27 @@
                         <tr>
                             <td>Jenis Kelamin </td>
                             <td>:</td>
-                            <td>Laki-laki</td>
+                            <td><?= $identitas['jenis_kelamin'] ?></td>
                         </tr>
                         <tr>
-                            <td>Jurusan </td>
+                            <td>Kelas</td>
                             <td>:</td>
-                            <td>MIPA</td>
+                            <td> <?= $identitas['nama_kelas'] ?></td>
                         </tr>
                         <tr>
                             <td>Angkatan </td>
                             <td>:</td>
-                            <td>2018</td>
-                        </tr>
-                        <tr>
-                            <td>Status </td>
-                            <td>:</td>
-                            <td>Aktif</td>
+                            <td><?= $identitas['Angkatan']; ?></td>
                         </tr>
                         <tr>
                             <td>Alamat </td>
                             <td>:</td>
-                            <td>Jl. Suka-suka 45, Sukasari, Palembang</td>
+                            <td><?= $identitas['Alamat'] ?></td>
                         </tr>
                         <tr>
                             <td>Diterima di Sekolah </td>
                             <td>:</td>
-                            <td>6 Juni 2018</td>
+                            <td><?= $identitas['tgl_masuk'] ?></td>
                         </tr>
                     </table>
                 </div>

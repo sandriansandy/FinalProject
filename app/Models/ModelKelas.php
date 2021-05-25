@@ -17,4 +17,9 @@ class ModelKelas extends Model
         } else
             return $this->find($id_kelas);
     }
+
+    public function cek($id)
+    {
+        return $this->where(['id_kelas'])->find();
+    }
 }

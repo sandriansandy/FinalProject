@@ -45,4 +45,8 @@ class ModelJadwal extends Model
             ->join('siswa', 'siswa.id_kelas = jadwal.id_kelas')
             ->join('guru', 'guru.NIP = jadwal.NIP')->where(['jadwal.id_kelas' => $id_kelas])->findAll();
     }
+    public function cek($id)
+    {
+        return $this->where(['id_jadwal'])->find();
+    }
 }

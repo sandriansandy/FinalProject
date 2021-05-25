@@ -52,7 +52,7 @@ class PagesAdmin extends BaseController
     public function simpanSiswa()
     {
         $this->siswa = new ModelSiswa();
-
+        $cek = $this->guru->cek($this->request->getVar('NISN'));
         $foto = $this->request->getFile('foto');
         if ($foto->getError() == 4) {
             $namaFoto = 'user.png';
@@ -61,18 +61,23 @@ class PagesAdmin extends BaseController
             $namaFoto = $this->request->getVar('NISN') . '.' . $ext;
             $foto->move('assets/img/profil_siswa', $namaFoto);
         };
-        $this->siswa->insert([
-            'NISN' => $this->request->getVar('NISN'),
-            'Nama' => $this->request->getVar('Nama'),
-            'TTL' => $this->request->getVar('TTL'),
-            'Angkatan' => $this->request->getVar('Angkatan'),
-            'Alamat' => $this->request->getVar('Alamat'),
-            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
-            'foto' => $namaFoto,
-            'id_kelas' => $this->request->getVar('kelas'),
-            'jenis_kelamin' => $this->request->getVar('gender'),
-            'password' => md5($this->request->getVar('NISN'))
-        ]);
+        if (!$cek) {
+            $this->siswa->insert([
+                'NISN' => $this->request->getVar('NISN'),
+                'Nama' => $this->request->getVar('Nama'),
+                'TTL' => $this->request->getVar('TTL'),
+                'Angkatan' => $this->request->getVar('Angkatan'),
+                'Alamat' => $this->request->getVar('Alamat'),
+                'tgl_masuk' => $this->request->getVar('tgl_masuk'),
+                'foto' => $namaFoto,
+                'id_kelas' => $this->request->getVar('kelas'),
+                'jenis_kelamin' => $this->request->getVar('gender'),
+                'password' => md5($this->request->getVar('NISN'))
+            ]);
+        } else {
+            session()->setFlashdata('error', 'NISN sudah ada');
+            return redirect()->to('/admin/pds');
+        }
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/pds');
@@ -188,6 +193,7 @@ class PagesAdmin extends BaseController
     {
         $this->guru = new ModelGuru();
         $foto = $this->request->getFile('foto');
+        $cek = $this->guru->cek($this->request->getVar('NIP'));
         if ($foto->getError() == 4) {
             $namaFoto = 'user.png';
         } else {
@@ -195,19 +201,23 @@ class PagesAdmin extends BaseController
             $namaFoto = $this->request->getVar('NIP') . '.' . $ext;
             $foto->move('assets/img/profil_guru', $namaFoto);
         };
-
-        $this->guru->insert([
-            'NIP' => $this->request->getVar('NIP'),
-            'nama_guru' => $this->request->getVar('Nama'),
-            'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
-            'TTL' => $this->request->getVar('TTL'),
-            'Alamat' => $this->request->getVar('Alamat'),
-            'tgl_masuk' => $this->request->getVar('tgl_masuk'),
-            'id_mapel' => $this->request->getVar('mapel'),
-            'foto' => $namaFoto,
-            'no_hp' => $this->request->getVar('no_hp'),
-            'password' => md5($this->request->getVar('NIP'))
-        ]);
+        if (!$cek) {
+            $this->guru->insert([
+                'NIP' => $this->request->getVar('NIP'),
+                'nama_guru' => $this->request->getVar('Nama'),
+                'jenis_kelamin' => $this->request->getVar('jenis_kelamin'),
+                'TTL' => $this->request->getVar('TTL'),
+                'Alamat' => $this->request->getVar('Alamat'),
+                'tgl_masuk' => $this->request->getVar('tgl_masuk'),
+                'id_mapel' => $this->request->getVar('mapel'),
+                'foto' => $namaFoto,
+                'no_hp' => $this->request->getVar('no_hp'),
+                'password' => md5($this->request->getVar('NIP'))
+            ]);
+        } else {
+            session()->setFlashdata('error', 'NIP sudah ada');
+            return redirect()->to('/admin/pdg');
+        }
         // dd($this->request->getVar());
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
@@ -285,16 +295,22 @@ class PagesAdmin extends BaseController
     {
         $this->jadwal = new ModelJadwal();
         $this->guru = new ModelGuru();
+        $cek = $this->jadwal->cek($this->request->getVar('id_jadwal'));
         $data = $this->guru->getGuruAdmin($this->request->getVar('Nama'));
-        $this->jadwal->insert([
-            'id_jadwal' => $this->request->getVar('id_jadwal'),
-            'id_mapel' => $data['id_mapel'],
-            'id_kelas' => $this->request->getVar('kelas'),
-            'NIP' => $this->request->getVar('Nama'),
-            'hari' => $this->request->getVar('hari'),
-            'jam_mulai' => $this->request->getVar('jam_mulai'),
-            'jam_selesai' => $this->request->getVar('jam_selesai')
-        ]);
+        if (!$cek) {
+            $this->jadwal->insert([
+                'id_jadwal' => $this->request->getVar('id_jadwal'),
+                'id_mapel' => $data['id_mapel'],
+                'id_kelas' => $this->request->getVar('kelas'),
+                'NIP' => $this->request->getVar('Nama'),
+                'hari' => $this->request->getVar('hari'),
+                'jam_mulai' => $this->request->getVar('jam_mulai'),
+                'jam_selesai' => $this->request->getVar('jam_selesai')
+            ]);
+        } else {
+            session()->setFlashdata('error', 'id_jadwal sudah ada');
+            return redirect()->to('/admin/jadwal');
+        }
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/jadwal');
@@ -320,11 +336,17 @@ class PagesAdmin extends BaseController
     public function simpanKelas()
     {
         $this->kelas = new ModelKelas();
-        $this->kelas->insert([
-            'id_kelas' => $this->request->getVar('kode'),
-            'nama_kelas' => $this->request->getVar('kelas'),
-            'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
-        ]);
+        $cek = $this->kelas->cek($this->request->getVar('kode'));
+        if (!$cek) {
+            $this->kelas->insert([
+                'id_kelas' => $this->request->getVar('kode'),
+                'nama_kelas' => $this->request->getVar('kelas'),
+                'tahun_ajaran' => $this->request->getVar('tahun_ajaran')
+            ]);
+        } else {
+            session()->setFlashdata('error', 'id_kelas sudah ada');
+            return redirect()->to('/admin/kelas');
+        }
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/kelas');
     }
@@ -371,10 +393,16 @@ class PagesAdmin extends BaseController
     public function simpanMapel()
     {
         $this->Mapel = new ModelMapel();
-        $this->Mapel->insert([
-            'id_mapel' => $this->request->getVar('id_mapel'),
-            'Nama_mapel' => $this->request->getVar('Nama_mapel'),
-        ]);
+        $cek = $this->Mapel->cek($this->request->getVar('id_mapel'));
+        if (!$cek) {
+            $this->Mapel->insert([
+                'id_mapel' => $this->request->getVar('id_mapel'),
+                'Nama_mapel' => $this->request->getVar('Nama_mapel'),
+            ]);
+        } else {
+            session()->setFlashdata('error', 'id_mapel sudah ada');
+            return redirect()->to('/admin/mapel');
+        }
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/mapel');
     }
@@ -433,20 +461,26 @@ class PagesAdmin extends BaseController
         $this->detPresensi = new ModelDetPresensi();
         $this->jadwal = new ModelJadwal();
         $this->siswa = new ModelSiswa();
+        $cek = $this->presensi->cek($this->request->getVar('kode'));
         $kelas = $this->jadwal->getEditJadwalAdmin($this->request->getVar('jadwal'));
         $siswa = $this->siswa->getSiswaKelas($kelas['id_kelas']);
-        foreach ($siswa as $s) {
-            $this->detPresensi->insert([
+        if (!$cek) {
+            foreach ($siswa as $s) {
+                $this->detPresensi->insert([
+                    'id_presensi' => $this->request->getVar('kode'),
+                    'NISN' => $s['NISN'],
+                    'status' => null
+                ]);
+            }
+            $this->presensi->insert([
                 'id_presensi' => $this->request->getVar('kode'),
-                'NISN' => $s['NISN'],
-                'status' => null
+                'id_jadwal' => $this->request->getVar('jadwal'),
+                'tanggal' => $this->request->getVar('tanggal')
             ]);
+        } else {
+            session()->setFlashdata('error', 'id_presensi sudah ada');
+            return redirect()->to('/admin/presensi');
         }
-        $this->presensi->insert([
-            'id_presensi' => $this->request->getVar('kode'),
-            'id_jadwal' => $this->request->getVar('jadwal'),
-            'tanggal' => $this->request->getVar('tanggal')
-        ]);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/presensi');
     }
@@ -507,6 +541,7 @@ class PagesAdmin extends BaseController
     public function SimpanBerkas()
     {
         $this->berkas = new ModelBerkas();
+        $cek = $this->berkas->cek($this->request->getVar('kode'));
         $berkas = $this->request->getFile('template');
         if ($berkas->getError() == 4) {
             session()->setFlashdata('error', 'Silahkan Upload Template');
@@ -516,11 +551,16 @@ class PagesAdmin extends BaseController
             $namaFile = $this->request->getVar('form') . '.' . $ext;
             $berkas->move('assets/file/template', $namaFile);
         };
-        $this->berkas->insert([
-            'id_berkas' => $this->request->getVar('kode'),
-            'jenis_berkas' => $this->request->getVar('form'),
-            'nama_file' => $namaFile
-        ]);
+        if (!$cek) {
+            $this->berkas->insert([
+                'id_berkas' => $this->request->getVar('kode'),
+                'jenis_berkas' => $this->request->getVar('form'),
+                'nama_file' => $namaFile
+            ]);
+        } else {
+            session()->setFlashdata('error', 'id_berkas sudah ada');
+            return redirect()->to('/admin/berkas');
+        }
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/admin/berkas');
     }

@@ -17,4 +17,8 @@ class ModelBerkas extends Model
         }
         return $this->where(['id_berkas' => $id])->first();
     }
+    public function cek($id)
+    {
+        return $this->where(['id_berkas'])->find();
+    }
 }

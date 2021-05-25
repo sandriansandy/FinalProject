@@ -32,4 +32,8 @@ class ModelPresensi extends Model
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
             ->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')->first();
     }
+    public function cek($id)
+    {
+        return $this->where(['id_presensi'])->find();
+    }
 }
