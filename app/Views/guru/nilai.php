@@ -10,9 +10,6 @@
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<p class="lead">Data Nilai Siswa</p>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<a href="../admin/formTambah.html" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -43,7 +40,7 @@
 						</tfoot>
 					</table>
 				</div>
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<h2>Tambah Kelas</h2>
 					<form action="<?php base_url() ?>/admin/simpanKelas" method="post" enctype="multipart/form-data">
 						<div class="input-group">
@@ -63,7 +60,7 @@
 						<br>
 						<input type="submit" value="SUBMIT" class="btn btn-success">
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

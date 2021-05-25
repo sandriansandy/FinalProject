@@ -63,6 +63,7 @@ $routes->get('/guru/simpanNilai', 'PagesGuru::simpanNilai');
 $routes->get('/guru/tambahNilaiGuru', 'PagesGuru::tambahNilaiGuru');
 $routes->get('/guru/nilaiKelas', 'PagesGuru::nilaiKelasGuru');
 $routes->get('/guru/presensi', 'PagesGuru::presensiGuru');
+$routes->get('/guru/detailPresensi/(:any)', 'PagesGuru::detailPresensiGuru/$1');
 
 // HALAMAN ADMIN
 $routes->get('/admin', 'PagesAdmin::IndexAdmin');

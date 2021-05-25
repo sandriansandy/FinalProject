@@ -10,34 +10,36 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <p class="lead">Data Presensi Siswa</p>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <a href="../admin/formTambah.html" class="btn btn-success" style="float: right;"><span class="fa fa-plus"></span> Tambah Data</a>
-                </div>
+                </div> -->
             </div>
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Kode Mapel</th>
+                        <th>Nama Mata Pelajaran</th>
                         <th>Tanggal</th>
                         <th>Kelas</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>CR55-PAI</td>
-                        <td>27-12-2021</td>
-                        <td>XI MIPA 2</td>
-                        <td>
-                            <a class="btn btn-info" href="detailPresensi.html"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
-                            <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
-                            <a class="btn btn-danger" href=""><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
-                        </td>
-                    </tr>
+                    <?php foreach ($presensi as $pg) : ?>
+                        <tr>
+                            <td><?= $pg['Nama_mapel']; ?></td>
+                            <td><?= $pg['tanggal']; ?></td>
+                            <td><?= $pg['nama_kelas']; ?></td>
+                            <td>
+                                <a class="btn btn-info" href="<?php base_url() ?>/guru/detailPresensi/<?= $pg['id_presensi'] ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
+                                <a class="btn btn-warning" href=""><span class="glyphicon glyphicon-edit" style="padding-right: 5px;"></span>Edit</a>
+                                <a class="btn btn-danger" href="<?php base_url() ?>/guru/hapusPresensi/<?= $pg['id_presensi'] ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Kode Mapel</th>
+                        <th>Nama Mata Pelajaran</th>
                         <th>Tanggal</th>
                         <th>Kelas</th>
                         <th>Action</th>

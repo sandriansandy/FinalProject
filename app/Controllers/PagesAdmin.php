@@ -37,8 +37,8 @@ class PagesAdmin extends BaseController
         $data['judul'] = 'Detail Siswa | SINOFAK';
         $data['content'] = 'detailSiswa';
         $data['identitas'] = $this->siswa->getSiswaAdmin($NISN);
-        $time = Time::parse($this->siswa->getSiswaAdmin($NISN)['tgl_masuk'], 'Asia/Jakarta');
-        $data['waktu'] = $time->toLocalizedString('d MMMM yyyy');
+        // $time = Time::parse($this->siswa->getSiswaAdmin($NISN)['tgl_masuk'], 'Asia/Jakarta');
+        // $data['waktu'] = $time->toLocalizedString('d MMMM yyyy');
         return view('admin/detailSiswa', $data);
     }
     public function tambahSiswaAdmin()

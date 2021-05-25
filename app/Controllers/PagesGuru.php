@@ -2,10 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelDetPresensi;
 use App\Models\ModelGuru;
 use App\Models\ModelJadwal;
 use App\Models\ModelMapel;
 use App\Models\ModelNilai;
+use App\Models\ModelPresensi;
 use App\Models\ModelSiswa;
 
 class PagesGuru extends BaseController
@@ -61,14 +63,18 @@ class PagesGuru extends BaseController
     }
     public function presensiGuru()
     {
+        $this->presensi = new ModelPresensi();
         $data['judul'] = 'Presensi | SINOFAK';
         $data['content'] = 'presensi';
+        $data['presensi'] = $this->presensi->getPresensiGuru();
         return view('guru/presensi', $data);
     }
-    public function detailPresensiGuru()
+    public function detailPresensiGuru($id_presensi)
     {
+        $this->detPresensi = new ModelDetPresensi();
         $data['judul'] = 'Detail Presensi | SINOFAK';
         $data['content'] = 'detailPresensi';
+        $data['detPresensi'] = $this->detPresensi->getDetPresensi($id_presensi);
         return view('guru/detailPresensi', $data);
     }
 

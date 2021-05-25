@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 12:30 PM
+-- Generation Time: May 25, 2021 at 05:00 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -38,7 +38,9 @@ CREATE TABLE `berkas` (
 --
 
 INSERT INTO `berkas` (`id_berkas`, `jenis_berkas`, `nama_file`) VALUES
-('1', 'Dispensasi', 'Dispensasi.png');
+('1', 'Dispensasi', 'Dispensasi.pdf'),
+('2', 'Surat Sakit', 'Surat Sakit.jpg'),
+('4', 'Proposal', 'Proposal.jpg');
 
 -- --------------------------------------------------------
 
@@ -50,8 +52,22 @@ CREATE TABLE `detail_presensi` (
   `id_dp` int(11) NOT NULL,
   `id_presensi` int(11) NOT NULL,
   `NISN` int(50) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_presensi`
+--
+
+INSERT INTO `detail_presensi` (`id_dp`, `id_presensi`, `NISN`, `status`) VALUES
+(27, 2, 1, 'hadir'),
+(28, 2, 1923141, 'ijin'),
+(29, 3, 1, 'absen'),
+(30, 3, 1923141, 'hadir'),
+(31, 4, 1, 'hadir'),
+(32, 4, 1923141, 'hadir'),
+(33, 5, 1, 'hadir'),
+(34, 5, 1923141, 'hadir');
 
 -- --------------------------------------------------------
 
@@ -77,7 +93,8 @@ CREATE TABLE `guru` (
 --
 
 INSERT INTO `guru` (`NIP`, `nama_guru`, `jenis_kelamin`, `TTL`, `Alamat`, `tgl_masuk`, `id_mapel`, `no_hp`, `foto`, `password`) VALUES
-(123, 'Heri Wahana', 'L', '1111-11-11', 'Kediri', '2222-02-22', '03', 8777777, '123.jpg', '6812af90c6a1bbec134e323d7e70587b');
+(123, 'Heriadi', 'L', '1978-11-11', 'Malang', '2017-02-22', '01', 877777, '123.png', '202cb962ac59075b964b07152d234b70'),
+(9090, 'Dini Handini', 'L', '1976-03-31', 'Jombang', '2015-04-04', '01', 9090909, '9090.jpg', '38f629170ac3ab74b9d6d2cc411c2f3c');
 
 -- --------------------------------------------------------
 
@@ -100,7 +117,11 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `id_mapel`, `NIP`, `hari`, `jam_mulai`, `jam_selesai`, `id_kelas`) VALUES
-(1, '03', 123, 'Senin', '08:00:00.000000', '09:00:00.000000', 2);
+(1, '01', 123, 'Senin', '08:30:00.000000', '09:00:00.000000', 1),
+(2, '04', 9090, 'Rabu', '12:00:00.000000', '13:00:00.000000', 1),
+(3, '04', 9090, 'Senin', '12:00:00.000000', '13:00:00.000000', 2),
+(5, '04', 9090, 'Rabu', '08:00:00.000000', '09:00:00.000000', 4),
+(6, '01', 123, 'Kamis', '12:00:00.000000', '13:00:00.000000', 2);
 
 -- --------------------------------------------------------
 
@@ -119,8 +140,10 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `tahun_ajaran`) VALUES
-(2, 'IPA 2', '2021/2022'),
-(3, 'MIPA 3', '2020/2021');
+(1, 'MIPA 1', '2020/2021'),
+(2, 'MIPA 5', '2021/2022'),
+(3, 'MIPA 3', '2020/2021'),
+(4, 'IPS 3', '2020/2021');
 
 -- --------------------------------------------------------
 
@@ -165,7 +188,8 @@ INSERT INTO `mapel` (`id_mapel`, `Nama_mapel`) VALUES
 ('02', 'Matematika'),
 ('03', 'Fisika'),
 ('04', 'Bahasa Inggris'),
-('9', 'Penjaskes');
+('05', 'Kimia'),
+('9', 'PJOK');
 
 -- --------------------------------------------------------
 
@@ -195,9 +219,20 @@ CREATE TABLE `nilai` (
 CREATE TABLE `presensi` (
   `id_presensi` int(11) NOT NULL,
   `id_jadwal` int(11) NOT NULL,
-  `id_kelas` int(11) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `presensi`
+--
+
+INSERT INTO `presensi` (`id_presensi`, `id_jadwal`, `tanggal`) VALUES
+(1, 1, '0011-11-11'),
+(2, 3, '0222-02-22'),
+(3, 3, '0333-03-31'),
+(4, 3, '5555-05-05'),
+(5, 6, '1111-11-11'),
+(6, 5, '5555-05-05');
 
 -- --------------------------------------------------------
 
@@ -223,7 +258,8 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`NISN`, `Nama`, `TTL`, `Angkatan`, `Alamat`, `tgl_masuk`, `jenis_kelamin`, `foto`, `id_kelas`, `password`) VALUES
-(1923141, 'Siti Markonah', '1111-11-11', 2020, 'Kediri', '0222-02-22', 'L', '1923141.jpg', 2, 'f1f31ed84a4705672e02b2deabedd4fb');
+(1, 'Al Hadad', '2000-06-12', 2020, 'Surabaya', '2020-07-12', 'L', '1.jpg', 1, 'c4ca4238a0b923820dcc509a6f75849b'),
+(1923141, 'Siti Markonah', '2000-09-13', 2020, 'Kediri', '2020-08-23', 'P', '1923141.jpg', 1, 'f1f31ed84a4705672e02b2deabedd4fb');
 
 --
 -- Indexes for dumped tables
@@ -291,8 +327,7 @@ ALTER TABLE `nilai`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id_presensi`),
-  ADD KEY `id_jadwal` (`id_jadwal`),
-  ADD KEY `id_kelas` (`id_kelas`);
+  ADD KEY `id_jadwal` (`id_jadwal`);
 
 --
 -- Indexes for table `siswa`
@@ -304,6 +339,12 @@ ALTER TABLE `siswa`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `detail_presensi`
+--
+ALTER TABLE `detail_presensi`
+  MODIFY `id_dp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `layanan`
@@ -325,7 +366,6 @@ ALTER TABLE `nilai`
 -- Constraints for table `detail_presensi`
 --
 ALTER TABLE `detail_presensi`
-  ADD CONSTRAINT `detail_presensi_ibfk_1` FOREIGN KEY (`id_presensi`) REFERENCES `presensi` (`id_presensi`),
   ADD CONSTRAINT `detail_presensi_ibfk_2` FOREIGN KEY (`NISN`) REFERENCES `siswa` (`NISN`);
 
 --
@@ -358,8 +398,7 @@ ALTER TABLE `nilai`
 -- Constraints for table `presensi`
 --
 ALTER TABLE `presensi`
-  ADD CONSTRAINT `presensi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`),
-  ADD CONSTRAINT `presensi_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `kelas` (`id_kelas`);
+  ADD CONSTRAINT `presensi_ibfk_1` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`);
 
 --
 -- Constraints for table `siswa`

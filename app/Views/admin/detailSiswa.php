@@ -55,11 +55,11 @@
 							<td>:</td>
 							<td><?= $identitas['Alamat']; ?></td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td>Diterima di Sekolah </td>
 							<td>:</td>
-							<td><?= $waktu ?></td>
-						</tr>
+							<td></td>
+						</tr> -->
 					</table>
 				</div>
 			</div>

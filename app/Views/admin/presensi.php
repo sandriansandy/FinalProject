@@ -28,7 +28,7 @@
                                 <td><?= $p['tanggal']; ?></td>
                                 <td><?= $p['nama_kelas']; ?></td>
                                 <td>
-                                    <a class="btn btn-info" href="<?php base_url() ?>/admin/detailPresensi/<?= $p['id_presensi'] ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a>
+                                    <!-- <a class="btn btn-info" href="<?php base_url() ?>/admin/detailPresensi/<?= $p['id_presensi'] ?>"><span class="fa fa-info" style="padding-right: 5px;"></span>Detail</a> -->
                                     <a class="btn btn-danger" href="<?php base_url() ?>/admin/hapusPresensi/<?= $p['id_presensi'] ?>"><span class="glyphicon glyphicon-trash" style="padding-right: 5px;"></span>Delete</a>
                                 </td>
                             </tr>

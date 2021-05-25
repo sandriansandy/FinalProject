@@ -21,4 +21,15 @@ class ModelPresensi extends Model
             ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
             ->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')->first();
     }
+    public function getPresensiGuru($id_presensi = false)
+    {
+        if ($id_presensi == false) {
+            return $this->join('jadwal', 'presensi.id_jadwal = jadwal.id_jadwal')
+                ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
+                ->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')->findAll();
+        }
+        return $this->join('jadwal', 'presensi.id_jadwal = jadwal.id_jadwal')
+            ->join('kelas', 'kelas.id_kelas = jadwal.id_kelas')
+            ->join('mapel', 'mapel.id_mapel = jadwal.id_mapel')->first();
+    }
 }
